@@ -1,14 +1,18 @@
 :root {
-    --klein: #002FA7;
-    --klein-deep: #001F6E;
-    --klein-600: #1D47C4;
-    --klein-400: #5C7BE0;
-    --klein-200: #B9C8F4;
-    --klein-50: #EEF2FD;
-    --paper: #F6F8FE;
+    --klein: #0035B5;
+    --klein-deep: #00185F;
+    --klein-600: #1E55D6;
+    --klein-400: #70A7FF;
+    --klein-200: #C8E5FF;
+    --klein-50: #EDF6FF;
+    --paper: #F7FBFF;
     --white: #FFFFFF;
-    --gold: #F4B53F;
-    --hpd-red: #E63946;
+    --gold: #F5B942;
+    --hpd-red: #E4232E;
+    --red-soft: #FFE9EC;
+    --mint: #9EEBCF;
+    --pink: #FFD7E8;
+    --paper-yellow: #FFF4BC;
     --ink: #0E1B3D;
     --ink-soft: #51607D;
     --line: #E3E9F8;
@@ -26,15 +30,28 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     background: var(--paper);
     color: var(--ink);
-    font-family: Montserrat, "Segoe UI", Arial, sans-serif;
+    font-family: "Noto Serif", Georgia, serif;
     font-size: 1.02rem;
     line-height: 1.7;
     letter-spacing: 0;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+.brand-text strong,
+.eyebrow,
+.section-kicker,
+.panel-label {
+    font-family: "Sigmar One", "Noto Serif", Georgia, serif;
+    font-weight: 400;
 }
 
 img {
@@ -138,7 +155,7 @@ a:focus-visible {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 4px;
+    gap: 8px;
 }
 
 .partner-logos img {
@@ -150,14 +167,12 @@ a:focus-visible {
 .partner-logos .logo-bdhvs {
     width: auto;
     height: 56px;
-    margin-left: -2px;
     object-fit: contain;
 }
 
 .partner-logos .logo-tdn {
     width: 44px;
     height: 44px;
-    margin-left: -1px;
     object-fit: contain;
 }
 
@@ -172,6 +187,37 @@ a:focus-visible {
     color: var(--white);
 }
 
+.hero-section::before,
+.hero-section::after {
+    position: absolute;
+    content: "";
+    pointer-events: none;
+}
+
+.hero-section::before {
+    right: min(7vw, 86px);
+    top: 34px;
+    width: 94px;
+    height: 18px;
+    background: var(--hpd-red);
+    border: 3px solid var(--white);
+    border-radius: 4px;
+    transform: rotate(8deg);
+    box-shadow: 0 10px 0 rgba(255, 255, 255, .14);
+}
+
+.hero-section::after {
+    left: min(6vw, 70px);
+    bottom: 40px;
+    width: 126px;
+    height: 126px;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, .18) 50%, transparent 0) 0 0 / 18px 18px,
+        linear-gradient(rgba(255, 255, 255, .18) 50%, transparent 0) 0 0 / 18px 18px;
+    opacity: .55;
+    transform: rotate(-8deg);
+}
+
 .hero-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(320px, .95fr);
@@ -184,19 +230,32 @@ a:focus-visible {
 .eyebrow,
 .section-kicker,
 .panel-label {
-    color: var(--gold);
+    color: var(--hpd-red);
     font-size: .92rem;
-    font-weight: 800;
     text-transform: uppercase;
 }
 
 .hero-title {
+    position: relative;
+    width: fit-content;
     margin-top: 8px;
     color: var(--white);
-    font-size: 5rem;
-    font-weight: 900;
+    font-size: 4.55rem;
     line-height: .95;
-    text-shadow: 4px 4px 0 var(--gold);
+    overflow-wrap: anywhere;
+    text-shadow: 4px 4px 0 var(--hpd-red);
+}
+
+.hero-title::after {
+    position: absolute;
+    left: 6px;
+    right: 10px;
+    bottom: -12px;
+    height: 10px;
+    background:
+        linear-gradient(135deg, transparent 0 35%, var(--gold) 36% 64%, transparent 65%) 0 0 / 18px 10px repeat-x;
+    content: "";
+    transform: rotate(-1deg);
 }
 
 .hero-subtitle {
@@ -205,6 +264,14 @@ a:focus-visible {
     color: var(--klein-200);
     font-size: 1.18rem;
     font-weight: 600;
+}
+
+.hero-subtitle-en {
+    color: rgba(255, 255, 255, .86);
+    font-size: .98rem;
+    font-style: italic;
+    font-weight: 700;
+    margin-top: 8px;
 }
 
 .hero-actions {
@@ -272,6 +339,39 @@ a:focus-visible {
     padding: 6px 12px;
 }
 
+.hero-sticker-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.hero-sticker-row span {
+    animation: stickerBob 3.4s ease-in-out infinite;
+    background: var(--paper-yellow);
+    border: 3px solid var(--ink);
+    border-radius: 10px;
+    box-shadow: 4px 5px 0 rgba(0, 24, 95, .28);
+    color: var(--klein-deep);
+    font-family: "Sigmar One", "Noto Serif", Georgia, serif;
+    font-size: .82rem;
+    line-height: 1;
+    padding: 10px 12px;
+    transform: rotate(-5deg);
+}
+
+.hero-sticker-row span:nth-child(2) {
+    animation-delay: .35s;
+    background: var(--mint);
+    transform: rotate(4deg);
+}
+
+.hero-sticker-row span:nth-child(3) {
+    animation-delay: .7s;
+    background: var(--pink);
+    transform: rotate(-2deg);
+}
+
 .hero-media {
     position: relative;
     margin: 0;
@@ -294,6 +394,56 @@ a:focus-visible {
     text-align: center;
 }
 
+.pin-mascot {
+    position: absolute;
+    left: -18px;
+    top: -22px;
+    width: 72px;
+    height: 72px;
+    background: var(--hpd-red);
+    border: 5px solid var(--white);
+    border-radius: 50% 50% 50% 8px;
+    box-shadow: 8px 10px 0 rgba(0, 24, 95, .22);
+    animation: stickerBob 3.8s ease-in-out infinite;
+    transform: rotate(-18deg);
+}
+
+.pin-mascot span,
+.pin-mascot::before,
+.pin-mascot::after {
+    position: absolute;
+    content: "";
+}
+
+.pin-mascot span {
+    left: 18px;
+    top: 23px;
+    width: 9px;
+    height: 9px;
+    background: var(--white);
+    border-radius: 50%;
+    box-shadow: 24px 0 0 var(--white);
+}
+
+.pin-mascot::before {
+    left: 24px;
+    top: 40px;
+    width: 22px;
+    height: 10px;
+    border-bottom: 4px solid var(--white);
+    border-radius: 0 0 999px 999px;
+}
+
+.pin-mascot::after {
+    right: -17px;
+    top: 6px;
+    width: 18px;
+    height: 18px;
+    background: var(--gold);
+    border: 4px solid var(--white);
+    clip-path: polygon(50% 0, 64% 34%, 100% 38%, 72% 60%, 82% 100%, 50% 76%, 18% 100%, 28% 60%, 0 38%, 36% 34%);
+}
+
 .hero-floating-panel {
     position: absolute;
     right: 22px;
@@ -301,7 +451,8 @@ a:focus-visible {
     width: min(240px, calc(100% - 44px));
     background: rgba(255, 255, 255, .94);
     border: 1px solid rgba(255, 255, 255, .55);
-    border-left: 5px solid var(--gold);
+    animation: floatBadge 4.2s ease-in-out infinite;
+    border-left: 5px solid var(--hpd-red);
     border-radius: 14px;
     box-shadow: 0 16px 34px rgba(0, 31, 110, .22);
     color: var(--ink);
@@ -311,7 +462,7 @@ a:focus-visible {
 }
 
 .hero-floating-panel span {
-    color: var(--klein-600);
+    color: var(--hpd-red);
     font-size: .75rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -341,9 +492,14 @@ a:focus-visible {
 .section-heading h2 {
     color: var(--klein);
     font-size: 2.2rem;
-    font-weight: 800;
     line-height: 1.18;
     margin-top: 6px;
+}
+
+.section-note {
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-top: 10px;
 }
 
 .info-section {
@@ -363,10 +519,27 @@ a:focus-visible {
 }
 
 .info-panel {
+    position: relative;
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 28px;
+}
+
+.info-panel::after,
+.address-card::after,
+.school-card::after {
+    position: absolute;
+    right: 16px;
+    top: -10px;
+    width: 46px;
+    height: 18px;
+    background: rgba(255, 244, 188, .88);
+    border: 2px solid rgba(0, 24, 95, .12);
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 47, 167, .08);
+    content: "";
+    transform: rotate(5deg);
 }
 
 .info-panel h3 {
@@ -398,6 +571,7 @@ a:focus-visible {
 }
 
 .process-strip div {
+    position: relative;
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: 14px;
@@ -406,8 +580,20 @@ a:focus-visible {
     padding: 16px;
 }
 
+.process-strip div::before {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--klein-200);
+    border-left-color: var(--hpd-red);
+    border-radius: 50%;
+    content: "";
+}
+
 .process-strip span {
-    color: var(--gold);
+    color: var(--hpd-red);
     font-size: .8rem;
     font-weight: 900;
 }
@@ -423,6 +609,78 @@ a:focus-visible {
     font-size: .88rem;
     font-weight: 600;
     line-height: 1.5;
+}
+
+.playful-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 70px;
+}
+
+.play-token {
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+    border: 3px solid var(--klein);
+    border-radius: 14px;
+    box-shadow: 7px 8px 0 rgba(0, 53, 181, .14);
+    display: grid;
+    gap: 8px;
+    min-height: 110px;
+    padding: 18px;
+    transform: rotate(-1.5deg);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.play-token:nth-child(2) {
+    border-color: var(--hpd-red);
+    transform: rotate(1.5deg);
+}
+
+.play-token:nth-child(3) {
+    border-color: var(--mint);
+    transform: rotate(-.8deg);
+}
+
+.play-token:nth-child(4) {
+    border-color: var(--gold);
+    transform: rotate(1deg);
+}
+
+.play-token::before {
+    position: absolute;
+    right: -18px;
+    top: -18px;
+    width: 58px;
+    height: 58px;
+    background: var(--paper-yellow);
+    border: 3px solid var(--ink);
+    border-radius: 18px;
+    content: "";
+    transform: rotate(14deg);
+}
+
+.play-token:hover {
+    box-shadow: 9px 10px 0 rgba(0, 53, 181, .2);
+    transform: translateY(-4px) rotate(0deg);
+}
+
+.play-token span {
+    color: var(--hpd-red);
+    font-family: "Sigmar One", "Noto Serif", Georgia, serif;
+    font-size: .84rem;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.play-token strong {
+    color: var(--klein-deep);
+    font-size: 1.08rem;
+    font-weight: 900;
+    position: relative;
+    z-index: 1;
 }
 
 .map-section {
@@ -479,6 +737,31 @@ a:focus-visible {
     padding: 18px;
 }
 
+.map-container::before {
+    position: absolute;
+    right: 22px;
+    top: 22px;
+    z-index: 2;
+    background: var(--hpd-red);
+    border: 3px solid var(--white);
+    border-radius: 999px;
+    box-shadow: 4px 5px 0 rgba(0, 24, 95, .18);
+    color: var(--white);
+    content: "Pin!";
+    font-family: "Sigmar One", "Noto Serif", Georgia, serif;
+    font-size: .72rem;
+    line-height: 1;
+    padding: 8px 10px;
+    pointer-events: none;
+    transform: rotate(7deg);
+}
+
+.map-stage {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
 .map-image {
     width: 100%;
     min-height: 360px;
@@ -488,21 +771,21 @@ a:focus-visible {
 
 .map-pins {
     position: absolute;
-    inset: 18px;
+    inset: 0;
 }
 
 .map-legend {
-    position: absolute;
-    left: 34px;
-    bottom: 34px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 8px;
     background: rgba(255, 255, 255, .92);
     border: 1px solid var(--line);
     border-radius: 999px;
     box-shadow: var(--shadow-sm);
+    margin: 14px auto 0;
     padding: 8px 10px;
+    width: fit-content;
 }
 
 .map-legend span {
@@ -526,7 +809,7 @@ a:focus-visible {
 }
 
 .dot-active {
-    background: var(--gold);
+    background: var(--hpd-red);
 }
 
 .map-pin {
@@ -542,10 +825,21 @@ a:focus-visible {
     transition: transform .25s ease, background .25s ease;
 }
 
+.map-pin::before {
+    position: absolute;
+    inset: -9px;
+    border: 2px solid rgba(228, 35, 46, .42);
+    border-radius: 50%;
+    content: "";
+    opacity: 0;
+    transform: scale(.7);
+    transition: opacity .25s ease, transform .25s ease;
+}
+
 .map-pin:hover,
 .map-pin:focus-visible,
 .map-pin.is-active {
-    background: var(--gold);
+    background: var(--hpd-red);
     transform: translate(-50%, -50%) scale(1.55);
 }
 
@@ -574,6 +868,13 @@ a:focus-visible {
     top: -36px;
 }
 
+.map-pin:hover::before,
+.map-pin:focus-visible::before,
+.map-pin.is-active::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
 .map-details {
     align-self: stretch;
     background: var(--white);
@@ -594,6 +895,26 @@ a:focus-visible {
     margin: 14px 0 10px;
 }
 
+.map-details .school-en {
+    color: var(--hpd-red);
+    font-size: .88rem;
+    font-style: italic;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.map-details .school-address {
+    background: var(--klein-50);
+    border-left: 4px solid var(--hpd-red);
+    border-radius: 8px;
+    color: var(--klein-deep);
+    font-size: .88rem;
+    font-weight: 800;
+    line-height: 1.5;
+    margin-top: 12px;
+    padding: 10px 12px;
+}
+
 .map-details .btn {
     align-self: flex-start;
     margin-top: 22px;
@@ -611,6 +932,89 @@ a:focus-visible {
     padding: 6px 12px;
 }
 
+.data-section {
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, .96), rgba(237, 246, 255, .96)),
+        radial-gradient(circle at 12px 12px, rgba(0, 53, 181, .08) 2px, transparent 0) 0 0 / 28px 28px;
+    border: 2px solid var(--klein-200);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 80px;
+    padding: 42px 36px;
+    position: relative;
+}
+
+.data-section::before {
+    position: absolute;
+    right: 28px;
+    top: -14px;
+    content: "VI/EN";
+    background: var(--hpd-red);
+    border: 3px solid var(--white);
+    border-radius: 6px;
+    box-shadow: var(--shadow-sm);
+    color: var(--white);
+    font-family: "Sigmar One", "Noto Serif", Georgia, serif;
+    font-size: .8rem;
+    line-height: 1;
+    padding: 8px 10px;
+    transform: rotate(4deg);
+}
+
+.data-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 22px 0;
+}
+
+.data-toolbar span {
+    background: var(--white);
+    border: 1px solid var(--klein-200);
+    border-radius: 999px;
+    color: var(--klein-deep);
+    font-size: .84rem;
+    font-weight: 800;
+    padding: 7px 12px;
+}
+
+.address-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.address-card {
+    position: relative;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--klein);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 47, 167, .06);
+    display: grid;
+    gap: 8px;
+    min-height: 160px;
+    padding: 16px;
+}
+
+.address-card.featured {
+    border-top-color: var(--hpd-red);
+    background: linear-gradient(180deg, var(--red-soft), var(--white) 50%);
+}
+
+.address-card h3 {
+    color: var(--klein);
+    font-size: 1.02rem;
+    line-height: 1.22;
+}
+
+.address-card p {
+    color: var(--ink-soft);
+    font-size: .9rem;
+    font-weight: 600;
+    line-height: 1.55;
+}
+
 .schools-section {
     margin-bottom: 84px;
 }
@@ -622,6 +1026,7 @@ a:focus-visible {
 }
 
 .school-card {
+    position: relative;
     overflow: hidden;
     background: var(--white);
     border: 1px solid var(--line);
@@ -697,13 +1102,13 @@ a:focus-visible {
 .site-footer {
     background: var(--klein-deep);
     color: var(--white);
-    padding: 30px 0;
+    padding: 36px 0;
 }
 
 .footer-inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) auto minmax(210px, .75fr);
     align-items: center;
-    justify-content: space-between;
     gap: 24px;
 }
 
@@ -714,13 +1119,16 @@ a:focus-visible {
 
 .site-footer p {
     color: rgba(255, 255, 255, .78);
+    font-size: .9rem;
+    line-height: 1.55;
+    margin-top: 4px;
 }
 
 .footer-logos {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2px;
+    gap: 8px;
     flex-shrink: 0;
 }
 
@@ -742,8 +1150,24 @@ a:focus-visible {
 .footer-logos .logo-bdhvs {
     width: auto;
     height: 50px;
-    margin-left: -2px;
     padding: 3px;
+}
+
+.footer-links {
+    display: grid;
+    gap: 8px;
+    justify-items: start;
+}
+
+.footer-links a,
+.footer-links span {
+    color: rgba(255, 255, 255, .82);
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.footer-links a:hover {
+    color: var(--white);
 }
 
 .reveal {
@@ -755,6 +1179,41 @@ a:focus-visible {
 .reveal.in {
     opacity: 1;
     transform: none;
+}
+
+@keyframes floatBadge {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(-1deg);
+    }
+}
+
+@keyframes stickerBob {
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -5px;
+    }
+}
+
+@keyframes hotspotPulse {
+    0%,
+    100% {
+        opacity: .65;
+        transform: scale(.9);
+    }
+
+    50% {
+        opacity: .15;
+        transform: scale(1.25);
+    }
 }
 
 .tour-page {
@@ -830,6 +1289,21 @@ a:focus-visible {
     box-shadow: var(--shadow-lg);
 }
 
+.tour-viewer::before {
+    position: absolute;
+    left: 24px;
+    top: -12px;
+    z-index: 2;
+    width: 72px;
+    height: 24px;
+    background: rgba(255, 244, 188, .94);
+    border: 2px solid rgba(0, 24, 95, .14);
+    border-radius: 6px;
+    content: "";
+    pointer-events: none;
+    transform: rotate(-5deg);
+}
+
 .tour-viewer img {
     width: 100%;
     height: 100%;
@@ -846,7 +1320,7 @@ a:focus-visible {
     position: absolute;
     width: 34px;
     height: 34px;
-    background: var(--gold);
+    background: var(--hpd-red);
     border: 3px solid var(--white);
     border-radius: 50%;
     box-shadow: 0 10px 20px rgba(0, 31, 110, .28);
@@ -860,6 +1334,7 @@ a:focus-visible {
     border: 1px solid rgba(255, 255, 255, .8);
     border-radius: 50%;
     content: "";
+    animation: hotspotPulse 1.8s ease-in-out infinite;
 }
 
 .hotspot:hover,
@@ -927,54 +1402,137 @@ a:focus-visible {
     .map-details {
         justify-content: flex-start;
     }
+
+    .address-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 780px) {
     body {
-        font-size: 1rem;
+        font-size: .95rem;
     }
 
     .container {
-        padding: 0 18px;
+        padding: 0 16px;
+    }
+
+    .site-header {
+        position: sticky;
+        border-bottom-width: 2px;
     }
 
     .site-nav {
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+        width: 100%;
+    }
+
+    .site-nav a {
+        background: var(--klein-50);
+        font-size: .7rem;
+        line-height: 1.2;
+        padding: 8px 4px;
+        text-align: center;
     }
 
     .header-inner {
-        gap: 8px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
         min-height: 0;
-        padding-bottom: 10px;
-        padding-top: 10px;
+        gap: 7px;
+        padding: 8px 14px 10px;
+    }
+
+    .brand {
+        justify-content: center;
+        gap: 9px;
+    }
+
+    .brand-logo {
+        height: 38px;
+        width: 38px;
+    }
+
+    .brand-text strong {
+        font-size: .95rem;
+    }
+
+    .brand-text small {
+        font-size: .66rem;
     }
 
     .partner-logos {
-        display: none;
+        display: flex !important;
+        gap: 6px;
+        justify-content: center;
+        max-width: 100%;
+        min-height: 40px;
+        overflow: visible;
+        width: 100%;
+    }
+
+    .partner-logos img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .partner-logos .logo-tdn {
+        height: 31px;
+        width: 31px;
+    }
+
+    .partner-logos .logo-bdhvs {
+        height: 38px;
+        width: auto;
     }
 
     .hero-section {
-        margin-bottom: 28px;
+        margin-bottom: 34px;
     }
 
     .hero-grid {
-        gap: 18px;
-        padding-top: 30px;
-        padding-bottom: 38px;
+        gap: clamp(14px, 3dvh, 20px);
+        padding-top: clamp(22px, 5dvh, 34px);
+        padding-bottom: clamp(28px, 6dvh, 42px);
     }
 
     .hero-title {
-        font-size: 2.85rem;
+        font-size: clamp(2rem, 10.5vw, 2.65rem);
+        line-height: 1;
+        text-shadow: 3px 3px 0 var(--hpd-red);
     }
 
     .hero-subtitle {
-        font-size: 1.02rem;
+        font-size: .94rem;
         line-height: 1.55;
+        margin-top: 12px;
+    }
+
+    .hero-subtitle-en {
+        font-size: .82rem;
+        line-height: 1.45;
+    }
+
+    .hero-sticker-row {
+        gap: 7px;
         margin-top: 14px;
     }
 
+    .hero-sticker-row span {
+        border-width: 2px;
+        border-radius: 8px;
+        box-shadow: 3px 4px 0 rgba(0, 24, 95, .22);
+        font-size: .66rem;
+        padding: 8px 9px;
+    }
+
     .hero-actions {
-        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 16px;
     }
 
     .hero-floating-panel,
@@ -985,27 +1543,89 @@ a:focus-visible {
 
     .hero-media img {
         border-width: 6px;
-        max-height: 175px;
+        max-height: clamp(150px, 30dvh, 220px);
+        width: 100%;
+    }
+
+    .pin-mascot {
+        left: -10px;
+        top: -15px;
+        width: 52px;
+        height: 52px;
+        border-width: 4px;
+        box-shadow: 5px 6px 0 rgba(0, 24, 95, .2);
+    }
+
+    .pin-mascot span {
+        left: 13px;
+        top: 16px;
+        width: 7px;
+        height: 7px;
+        box-shadow: 17px 0 0 var(--white);
+    }
+
+    .pin-mascot::before {
+        left: 16px;
+        top: 29px;
+        width: 18px;
+        height: 8px;
+        border-bottom-width: 3px;
+    }
+
+    .pin-mascot::after {
+        right: -13px;
+        top: 3px;
+        width: 14px;
+        height: 14px;
+        border-width: 3px;
     }
 
     .btn {
-        min-height: 44px;
-        padding: 11px 20px;
+        min-height: 42px;
+        padding: 10px 12px;
+        width: 100%;
     }
 
     .section-heading h2 {
-        font-size: 1.75rem;
+        font-size: clamp(1.45rem, 7vw, 1.75rem);
+        line-height: 1.22;
     }
 
-    .info-section {
-        padding: 30px 20px;
+    .info-section,
+    .data-section {
+        border-radius: 14px;
+        margin-bottom: 42px;
+        padding: 24px 16px;
+        width: calc(100% - 28px);
     }
 
     .info-grid,
     .process-strip,
+    .address-grid,
     .card-grid,
     .tour-info-list {
         grid-template-columns: 1fr;
+    }
+
+    .info-grid,
+    .process-strip {
+        gap: 12px;
+        margin-top: 18px;
+    }
+
+    .info-panel,
+    .process-strip div,
+    .map-details,
+    .card-content {
+        padding: 18px;
+    }
+
+    .info-panel h3 {
+        font-size: 1.22rem;
+    }
+
+    .process-strip p {
+        font-size: .82rem;
     }
 
     .map-header,
@@ -1022,36 +1642,277 @@ a:focus-visible {
     }
 
     .map-container {
+        border-radius: 16px;
         padding: 12px;
     }
 
+    .map-stage {
+        border-radius: 12px;
+    }
+
     .map-pins {
-        inset: 12px;
+        inset: 0;
     }
 
     .map-legend {
-        left: 20px;
-        right: 20px;
-        bottom: 20px;
-        border-radius: 14px;
+        border-radius: 12px;
         justify-content: center;
+        margin-top: 10px;
+        width: 100%;
     }
 
     .map-image {
-        min-height: 260px;
+        min-height: 0;
+        max-height: 300px;
+        object-fit: contain;
     }
 
     .map-pin::after {
         display: none;
     }
 
+    .map-section,
+    .schools-section {
+        margin-bottom: 48px;
+    }
+
+    .playful-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 42px;
+    }
+
+    .play-token {
+        border-width: 2px;
+        box-shadow: 5px 6px 0 rgba(0, 53, 181, .13);
+        min-height: 92px;
+        padding: 14px;
+    }
+
+    .play-token span {
+        font-size: .72rem;
+    }
+
+    .play-token strong {
+        font-size: .92rem;
+    }
+
+    .map-container::before {
+        right: 15px;
+        top: 15px;
+        border-width: 2px;
+        font-size: .62rem;
+        padding: 7px 8px;
+    }
+
+    .data-section {
+        margin-bottom: 48px;
+    }
+
+    .data-section::before {
+        right: 18px;
+        top: -12px;
+        font-size: .7rem;
+        padding: 7px 9px;
+    }
+
+    .data-toolbar {
+        gap: 7px;
+        margin: 18px 0;
+    }
+
+    .data-toolbar span {
+        font-size: .76rem;
+        padding: 6px 9px;
+    }
+
+    .address-card {
+        min-height: 0;
+        padding: 15px;
+    }
+
+    .map-layout,
+    .card-grid {
+        gap: 16px;
+    }
+
+    .map-details .btn,
+    .card-content .btn {
+        align-self: stretch;
+    }
+
+    .school-card {
+        border-radius: 14px;
+    }
+
+    .card-content h3 {
+        font-size: 1.12rem;
+    }
+
+    .card-meta {
+        gap: 6px;
+        margin-bottom: 16px;
+    }
+
+    .card-meta span {
+        font-size: .72rem;
+        padding: 5px 8px;
+    }
+
+    .site-footer {
+        padding: 24px 0;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        text-align: center;
+    }
+
+    .footer-logos {
+        flex-wrap: wrap;
+        gap: 7px;
+        max-width: 100%;
+    }
+
+    .footer-logos img {
+        border-radius: 10px;
+        height: 40px;
+        width: 40px;
+    }
+
+    .footer-logos .logo-tdn {
+        height: 42px;
+        width: 42px;
+    }
+
+    .footer-logos .logo-bdhvs {
+        height: 42px;
+        width: auto;
+    }
+
+    .footer-links {
+        justify-items: center;
+    }
+
+    .tour-hero {
+        padding: 26px 0 36px;
+    }
+
     .tour-copy h1 {
-        font-size: 2.35rem;
+        font-size: clamp(1.85rem, 9vw, 2.35rem);
     }
 
     .tour-viewer,
     .tour-viewer img {
-        min-height: 280px;
+        min-height: clamp(220px, 38dvh, 300px);
+    }
+
+    .tour-viewer {
+        border-width: 6px;
+    }
+
+    .tour-info {
+        margin: -20px auto 44px;
+        padding: 20px;
+        width: calc(100% - 28px);
+    }
+
+    .tour-status-row span {
+        font-size: .72rem;
+        padding: 5px 8px;
+    }
+}
+
+@media (max-width: 780px) and (max-height: 700px) {
+    .header-inner {
+        gap: 5px;
+        padding-bottom: 7px;
+        padding-top: 7px;
+    }
+
+    .brand-logo {
+        height: 34px;
+        width: 34px;
+    }
+
+    .partner-logos img {
+        height: 26px;
+        width: 26px;
+    }
+
+    .partner-logos .logo-tdn {
+        height: 27px;
+        width: 27px;
+    }
+
+    .partner-logos .logo-bdhvs {
+        height: 32px;
+    }
+
+    .site-nav a {
+        font-size: .7rem;
+        padding: 6px 4px;
+    }
+
+    .hero-grid {
+        padding-top: 18px;
+        padding-bottom: 26px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.82rem, 9.5vw, 2.28rem);
+    }
+
+    .hero-subtitle {
+        font-size: .86rem;
+    }
+
+    .hero-media img {
+        max-height: 135px;
+    }
+}
+
+@media (max-width: 380px) {
+    .container {
+        padding: 0 13px;
+    }
+
+    .header-inner {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .partner-logos {
+        gap: 4px;
+    }
+
+    .partner-logos img {
+        height: 27px;
+        width: 27px;
+    }
+
+    .partner-logos .logo-tdn {
+        height: 28px;
+        width: 28px;
+    }
+
+    .partner-logos .logo-bdhvs {
+        height: 34px;
+    }
+
+    .hero-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .info-section,
+    .data-section,
+    .tour-info {
+        width: calc(100% - 20px);
+    }
+
+    .map-legend span {
+        font-size: .72rem;
     }
 }
 
