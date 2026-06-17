@@ -1,13 +1,15 @@
 const schools = {
     lehongphong: {
         name: "THPT Chuyên Lê Hồng Phong",
-        district: "Quận 5",
+        enName: "Le Hong Phong High School for the Gifted",
+        district: "Chợ Quán",
+        address: "235 Nguyễn Văn Cừ, phường Chợ Quán, TP.HCM",
         image: "assets/images/schools/lhp.png",
-        cardText: "Ngôi trường giàu truyền thống bậc nhất thành phố, nổi bật với không gian cổ kính, thành tích học thuật và hoạt động học sinh sôi nổi.",
-        tourLead: "Một điểm đến giàu bản sắc, phù hợp để học sinh cảm nhận rõ văn hóa học đường và bề dày truyền thống.",
+        cardText: "Dữ liệu mẫu gồm ảnh khuôn viên, địa chỉ trung tâm và các điểm tham quan chính để người dùng hình dung nhanh bố cục trường.",
+        tourLead: "Tour mẫu tập trung vào khu sân, dãy lớp và mảng xanh, giúp người xem nhận diện không gian học đường qua các điểm chính.",
         stats: [
-            { label: "Khu vực", value: "Trung tâm" },
-            { label: "Điểm nhấn", value: "Truyền thống" },
+            { label: "Khu vực", value: "Chợ Quán" },
+            { label: "Địa chỉ", value: "235 Nguyễn Văn Cừ" },
             { label: "Trải nghiệm", value: "Sân trường, hành lang, lớp học" }
         ],
         hotspots: [
@@ -18,13 +20,15 @@ const schools = {
     },
     trandainghia: {
         name: "THPT Chuyên Trần Đại Nghĩa",
-        district: "TP. Thủ Đức",
+        enName: "Tran Dai Nghia High School for the Gifted",
+        district: "An Khánh",
+        address: "Lô P2 Khu tái định cư 38.4 ha, P. An Khánh, TP. HCM",
         image: "assets/images/anhchinh.png",
-        cardText: "Môi trường học thuật chất lượng cao với không gian rộng, nhiều khu chức năng và định hướng phát triển năng lực toàn diện.",
-        tourLead: "Góc nhìn toàn cảnh giúp học sinh hình dung nhanh quy mô khuôn viên, khu học tập và khu vận động của trường.",
+        cardText: "Dữ liệu mẫu ghi nhận toàn cảnh cơ sở chính, khu học tập và khu vận động, phục vụ mục tiêu tra cứu nhanh trên bản đồ.",
+        tourLead: "Góc nhìn toàn cảnh giúp học sinh nhận diện quy mô khuôn viên, vị trí khối lớp và các khu chức năng chính.",
         stats: [
-            { label: "Khu vực", value: "TP. Thủ Đức" },
-            { label: "Điểm nhấn", value: "Học thuật hiện đại" },
+            { label: "Khu vực", value: "An Khánh" },
+            { label: "Địa chỉ", value: "Lô P2, khu tái định cư 38.4 ha" },
             { label: "Trải nghiệm", value: "Toàn cảnh, sân thể thao, khối lớp" }
         ],
         hotspots: [
@@ -85,7 +89,9 @@ function updateMapDetails(schoolId) {
     detailBox.innerHTML = `
         <span class="badge">${school.district}</span>
         <h3>${school.name}</h3>
+        <p class="school-en">${school.enName}</p>
         <p>${school.cardText}</p>
+        <p class="school-address">${school.address}</p>
         <a class="btn btn-primary" href="tour360.html?id=${schoolId}">Mở tour 360</a>
     `;
 }
