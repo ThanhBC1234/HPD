@@ -95,9 +95,9 @@ a:focus-visible {
 .header-inner {
     min-height: 76px;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
 }
 
 .brand {
@@ -149,6 +149,49 @@ a:focus-visible {
 .site-nav a:hover {
     background: var(--klein-50);
     color: var(--klein);
+}
+
+.language-toggle {
+    align-items: center;
+    appearance: none;
+    background: var(--klein);
+    border: 0;
+    border-radius: 999px;
+    box-shadow: 0 5px 0 var(--hpd-red), 0 9px 18px rgba(0, 53, 181, .18);
+    color: var(--white);
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
+    font: inherit;
+    font-size: .82rem;
+    font-weight: 900;
+    gap: 8px;
+    justify-content: center;
+    line-height: 1;
+    min-height: 38px;
+    min-width: 94px;
+    overflow: hidden;
+    padding: 8px 12px;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.lang-arrow {
+    display: inline-flex;
+    font-size: .95em;
+    line-height: 1;
+    transform: translateY(-1px);
+}
+
+.language-toggle:hover {
+    background: var(--klein-deep);
+    box-shadow: 0 4px 0 var(--hpd-red), 0 8px 16px rgba(0, 53, 181, .2);
+    transform: translateY(-1px);
+}
+
+.language-toggle.is-en {
+    background: var(--hpd-red);
+    color: var(--white);
+    box-shadow: 0 5px 0 var(--klein-deep), 0 9px 18px rgba(228, 35, 46, .18);
 }
 
 .partner-logos {
@@ -238,11 +281,13 @@ a:focus-visible {
 .hero-title {
     position: relative;
     width: fit-content;
+    max-width: 100%;
     margin-top: 8px;
     color: var(--white);
-    font-size: 4.55rem;
+    font-size: clamp(2.25rem, 7.2vw, 4.55rem);
     line-height: .95;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
+    white-space: nowrap;
     text-shadow: 4px 4px 0 var(--hpd-red);
 }
 
@@ -948,7 +993,7 @@ a:focus-visible {
     position: absolute;
     right: 28px;
     top: -14px;
-    content: "VI/EN";
+    content: "DATA";
     background: var(--hpd-red);
     border: 3px solid var(--white);
     border-radius: 6px;
@@ -1389,6 +1434,7 @@ a:focus-visible {
 
     .brand,
     .site-nav,
+    .language-toggle,
     .partner-logos {
         justify-content: center;
     }
@@ -1443,6 +1489,7 @@ a:focus-visible {
         min-height: 0;
         gap: 7px;
         padding: 8px 14px 10px;
+        position: relative;
     }
 
     .brand {
@@ -1471,6 +1518,23 @@ a:focus-visible {
         min-height: 40px;
         overflow: visible;
         width: 100%;
+    }
+
+    .language-toggle {
+        position: absolute;
+        right: 10px;
+        top: 8px;
+        justify-self: center;
+        min-height: 30px;
+        min-width: 72px;
+        box-shadow: 0 4px 0 var(--hpd-red), 0 7px 14px rgba(0, 53, 181, .16);
+        font-size: .68rem;
+        gap: 5px;
+        padding: 6px 8px;
+    }
+
+    .lang-arrow {
+        font-size: .9em;
     }
 
     .partner-logos img {
@@ -1885,6 +1949,19 @@ a:focus-visible {
 
     .partner-logos {
         gap: 4px;
+    }
+
+    .language-toggle {
+        right: 8px;
+        min-height: 27px;
+        min-width: 56px;
+        font-size: .58rem;
+        gap: 3px;
+        padding: 5px 6px;
+    }
+
+    .lang-arrow {
+        font-size: .85em;
     }
 
     .partner-logos img {
