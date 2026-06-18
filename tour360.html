@@ -6,9 +6,10 @@
     <meta name="description" content="Trải nghiệm tour 360 trong dự án SchoolCarto Virtual Tour.">
     <title>Tour 360 | SchoolCarto Virtual Tour</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700;800&family=Sigmar+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=20260618-2">
 </head>
 <body data-page="tour" class="tour-page">
+    <div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.html" aria-label="SchoolCarto Virtual Tour trang chủ">
@@ -19,11 +20,11 @@
                 </span>
             </a>
 
-            <nav class="site-nav" aria-label="Điều hướng chính">
-                <a href="index.html#gioi-thieu">Giới thiệu</a>
-                <a href="index.html#ban-do">Bản đồ</a>
-                <a href="index.html#du-lieu">Dữ liệu</a>
-                <a href="index.html#truong-hoc">Trường học</a>
+            <nav class="site-nav" aria-label="Điều hướng chính" data-i18n="nav.aria" data-i18n-attr="aria-label">
+                <a href="index.html#gioi-thieu" data-i18n="nav.about">Giới thiệu</a>
+                <a href="index.html#ban-do" data-i18n="nav.map">Bản đồ</a>
+                <a href="index.html#du-lieu" data-i18n="nav.data">Dữ liệu</a>
+                <a href="index.html#truong-hoc" data-i18n="nav.schools">Trường học</a>
             </nav>
 
             <button class="language-toggle" type="button" aria-label="Chuyển ngôn ngữ" aria-pressed="false" data-lang-toggle>
@@ -45,10 +46,10 @@
         <section class="tour-hero">
             <div class="container">
                 <div class="tour-topbar">
-                    <a class="back-link" href="index.html#truong-hoc">&larr; Trở về danh sách</a>
+                    <a class="back-link" href="index.html#truong-hoc"><span aria-hidden="true">&larr;</span> <span data-i18n="tour.back">Trở về danh sách</span></a>
 
                     <label class="selector-wrap tour-selector" for="tourSchoolSelect">
-                        <span>Trường tham quan</span>
+                        <span data-i18n="tour.selectSchool">Trường tham quan</span>
                         <select id="tourSchoolSelect" class="map-selector">
                             <option value="trandainghia">THPT Chuyên Trần Đại Nghĩa</option>
                             <option value="lehongphong">THPT Chuyên Lê Hồng Phong</option>
@@ -58,13 +59,13 @@
 
                 <div class="tour-grid">
                     <div class="tour-copy">
-                        <p class="eyebrow">Virtual campus</p>
+                        <p class="eyebrow" data-i18n="tour.eyebrow">Virtual campus</p>
                         <h1 id="tourTitle">THPT Chuyên Trần Đại Nghĩa</h1>
                         <p id="tourSubtitle">Góc nhìn toàn cảnh giúp học sinh hình dung nhanh quy mô khuôn viên, khu học tập và khu vận động của trường.</p>
                         <div class="tour-status-row" aria-label="Trạng thái tour">
-                            <span>Ảnh toàn cảnh</span>
-                            <span>Hotspot tương tác</span>
-                            <span>Thông tin nhanh</span>
+                            <span data-i18n="tour.pano">Ảnh toàn cảnh</span>
+                            <span data-i18n="tour.hotspot">Hotspot tương tác</span>
+                            <span data-i18n="tour.quickInfo">Thông tin nhanh</span>
                         </div>
                         <div class="hero-sticker-row tour-sticker-row" aria-hidden="true">
                             <span>Tap</span>
@@ -93,8 +94,8 @@
             <div>
                 <strong>SchoolCarto Virtual Tour</strong>
                 <p>TRƯỜNG THPT CHUYÊN TRẦN ĐẠI NGHĨA</p>
-                <p>Cơ sở chính: Lô P2 Khu tái định cư 38.4 ha, P. An Khánh, TP. HCM</p>
-                <p>Cơ sở phường Sài Gòn: 20 Lý Tự Trọng, P. Sài Gòn, TP.HCM</p>
+                <p data-i18n="footer.mainCampus">Cơ sở chính: Lô P2 Khu tái định cư 38.4 ha, P. An Khánh, TP.HCM</p>
+                <p data-i18n="footer.saigonCampus">Cơ sở phường Sài Gòn: 20 Lý Tự Trọng, P. Sài Gòn, TP.HCM</p>
             </div>
             <div class="footer-logos" aria-label="Logo đơn vị đồng hành">
                 <img src="assets/images/logos/truong.png" alt="Logo Trường THPT chuyên Trần Đại Nghĩa" class="logo-tdn">
@@ -103,13 +104,13 @@
                 <img src="assets/images/logos/bdhvs-tight.png" alt="Logo Bình Dân Học Vụ Số" class="logo-bdhvs">
             </div>
             <div class="footer-links">
-                <a href="https://www.facebook.com/thptchuyentrandainghia">Facebook Trường</a>
-                <a href="https://www.facebook.com/doantruongtdn">Facebook Đoàn Trường</a>
+                <a href="https://www.facebook.com/thptchuyentrandainghia" data-i18n="footer.schoolFacebook">Facebook Trường</a>
+                <a href="https://www.facebook.com/doantruongtdn" data-i18n="footer.unionFacebook">Facebook Đoàn Trường</a>
                 <span>© 2026 Bình Dân Học Vụ Số</span>
             </div>
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=20260618-2"></script>
 </body>
 </html>
