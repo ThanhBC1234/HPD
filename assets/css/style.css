@@ -45,13 +45,18 @@ body {
 
 h1,
 h2,
-h3,
-.brand-text strong,
-.eyebrow,
-.section-kicker,
-.panel-label {
+.brand-text strong {
     font-family: "Sigmar One", "Noto Serif", Georgia, serif;
     font-weight: 400;
+}
+
+h3,
+.eyebrow,
+.section-kicker,
+.panel-label,
+.badge {
+    font-family: "Noto Serif", Georgia, serif;
+    font-weight: 800;
 }
 
 img {
@@ -90,6 +95,23 @@ a:focus-visible {
     border-bottom: 3px solid var(--klein);
     box-shadow: var(--shadow-sm);
     backdrop-filter: blur(14px);
+}
+
+.scroll-progress {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 60;
+    height: 4px;
+    pointer-events: none;
+}
+
+.scroll-progress span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--klein), var(--klein-400), var(--gold));
+    box-shadow: 0 1px 6px rgba(0, 53, 181, .4);
+    transition: width .1s linear;
 }
 
 .header-inner {
@@ -177,9 +199,11 @@ a:focus-visible {
 
 .lang-arrow {
     display: inline-flex;
+    font-family: Arial, "Segoe UI Symbol", sans-serif;
     font-size: .95em;
+    font-weight: 800;
     line-height: 1;
-    transform: translateY(-1px);
+    transform: none;
 }
 
 .language-toggle:hover {
@@ -192,6 +216,12 @@ a:focus-visible {
     background: var(--hpd-red);
     color: var(--white);
     box-shadow: 0 5px 0 var(--klein-deep), 0 9px 18px rgba(228, 35, 46, .18);
+}
+
+.language-toggle.is-bi {
+    background: var(--gold);
+    color: var(--klein-deep);
+    box-shadow: 0 5px 0 var(--klein-deep), 0 9px 18px rgba(245, 185, 66, .2);
 }
 
 .partner-logos {
@@ -306,9 +336,63 @@ a:focus-visible {
 .hero-subtitle {
     max-width: 620px;
     margin-top: 22px;
-    color: var(--klein-200);
+    color: var(--white);
     font-size: 1.18rem;
     font-weight: 600;
+}
+
+.i18n-en {
+    display: block;
+    margin-top: 3px;
+    font-size: .72em;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.35;
+    opacity: .76;
+}
+
+.site-nav .i18n-en,
+.btn .i18n-en,
+.badge .i18n-en {
+    font-size: .68em;
+}
+
+.marquee {
+    overflow: hidden;
+    margin: -30px 0 58px;
+    border-block: 3px solid var(--klein);
+    background: var(--klein-50);
+    padding: 10px 0;
+    -webkit-mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    width: max-content;
+    animation: marquee 18s linear infinite;
+}
+
+.marquee-track span {
+    color: var(--klein);
+    font-family: "Sigmar One", "Noto Serif", Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.marquee-track i {
+    width: 10px;
+    height: 10px;
+    background: var(--hpd-red);
+    border-radius: 50%;
+    transform: rotate(12deg);
+}
+
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
 }
 
 .hero-subtitle-en {
@@ -572,7 +656,6 @@ a:focus-visible {
 }
 
 .info-panel::after,
-.address-card::after,
 .school-card::after {
     position: absolute;
     right: 16px;
@@ -793,7 +876,8 @@ a:focus-visible {
     box-shadow: 4px 5px 0 rgba(0, 24, 95, .18);
     color: var(--white);
     content: "Pin!";
-    font-family: "Sigmar One", "Noto Serif", Georgia, serif;
+    font-family: "Noto Serif", Georgia, serif;
+    font-weight: 900;
     font-size: .72rem;
     line-height: 1;
     padding: 8px 10px;
@@ -803,15 +887,17 @@ a:focus-visible {
 
 .map-stage {
     position: relative;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
     border-radius: 14px;
 }
 
 .map-image {
     width: 100%;
-    min-height: 360px;
+    height: 100%;
+    min-height: 0;
     border-radius: 14px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .map-pins {
@@ -840,6 +926,10 @@ a:focus-visible {
     font-size: .78rem;
     font-weight: 800;
     gap: 6px;
+}
+
+.map-legend b {
+    font: inherit;
 }
 
 .dot {
@@ -999,7 +1089,8 @@ a:focus-visible {
     border-radius: 6px;
     box-shadow: var(--shadow-sm);
     color: var(--white);
-    font-family: "Sigmar One", "Noto Serif", Georgia, serif;
+    font-family: "Noto Serif", Georgia, serif;
+    font-weight: 900;
     font-size: .8rem;
     line-height: 1;
     padding: 8px 10px;
@@ -1023,6 +1114,12 @@ a:focus-visible {
     padding: 7px 12px;
 }
 
+.data-toolbar b,
+.data-toolbar i,
+.hero-floating-panel b {
+    font: inherit;
+}
+
 .address-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1042,15 +1139,12 @@ a:focus-visible {
     padding: 16px;
 }
 
-.address-card.featured {
-    border-top-color: var(--hpd-red);
-    background: linear-gradient(180deg, var(--red-soft), var(--white) 50%);
-}
-
 .address-card h3 {
     color: var(--klein);
-    font-size: 1.02rem;
-    line-height: 1.22;
+    font-family: "Sigmar One", "Noto Serif", Georgia, serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.28;
 }
 
 .address-card p {
@@ -1080,6 +1174,86 @@ a:focus-visible {
     display: flex;
     flex-direction: column;
     transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.tilt {
+    transform: perspective(900px) rotateX(var(--ry, 0deg)) rotateY(var(--rx, 0deg));
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.school-card.tilt:hover {
+    transform: perspective(900px) translateY(-6px) rotateX(var(--ry, 0deg)) rotateY(var(--rx, 0deg));
+}
+
+.spotlight {
+    position: relative;
+    overflow: hidden;
+}
+
+.spotlight::before {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(190px circle at var(--mx, 50%) var(--my, 50%), rgba(112, 167, 255, .22), transparent 62%);
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+}
+
+.spotlight:hover::before {
+    opacity: 1;
+}
+
+.spotlight > * {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    position: absolute;
+    left: -120%;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .5), transparent);
+    content: "";
+    transform: skewX(-18deg);
+    transition: left .6s ease;
+}
+
+.btn-primary:hover::after {
+    left: 140%;
+}
+
+.badge-pulse {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 3;
+    background: var(--hpd-red);
+    border: 2px solid var(--white);
+    border-radius: 999px;
+    color: var(--white);
+    font-size: .68rem;
+    font-weight: 900;
+    line-height: 1;
+    padding: 6px 9px;
+}
+
+.badge-pulse::after {
+    position: absolute;
+    inset: -4px;
+    border: 2px solid var(--hpd-red);
+    border-radius: inherit;
+    content: "";
+    animation: ringPulse 1.6s ease-out infinite;
 }
 
 .school-card:hover {
@@ -1258,6 +1432,24 @@ a:focus-visible {
     50% {
         opacity: .15;
         transform: scale(1.25);
+    }
+}
+
+@keyframes marquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes ringPulse {
+    0% {
+        opacity: .7;
+        transform: scale(.8);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
     }
 }
 
@@ -1483,6 +1675,16 @@ a:focus-visible {
         text-align: center;
     }
 
+    [data-lang-mode="bi"] .site-nav a {
+        min-height: 46px;
+    }
+
+    .site-nav .i18n-en {
+        display: block;
+        font-size: .62em;
+        margin-top: 2px;
+    }
+
     .header-inner {
         display: grid;
         grid-template-columns: minmax(0, 1fr);
@@ -1554,6 +1756,19 @@ a:focus-visible {
 
     .hero-section {
         margin-bottom: 34px;
+    }
+
+    .marquee {
+        margin: -18px 0 36px;
+        padding: 8px 0;
+    }
+
+    .marquee-track {
+        gap: 20px;
+    }
+
+    .marquee-track span {
+        font-size: .82rem;
     }
 
     .hero-grid {
@@ -1727,8 +1942,8 @@ a:focus-visible {
 
     .map-image {
         min-height: 0;
-        max-height: 300px;
-        object-fit: contain;
+        max-height: none;
+        object-fit: cover;
     }
 
     .map-pin::after {
@@ -1807,6 +2022,12 @@ a:focus-visible {
 
     .school-card {
         border-radius: 14px;
+    }
+
+    .tilt,
+    .school-card.tilt:hover {
+        transform: none;
+        will-change: auto;
     }
 
     .card-content h3 {
