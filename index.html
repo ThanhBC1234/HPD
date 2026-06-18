@@ -6,9 +6,10 @@
     <meta name="description" content="SchoolCarto Virtual Tour - bản đồ số hóa và dữ liệu tham quan trường THPT tại TP.HCM.">
     <title>SchoolCarto Virtual Tour | Bản đồ số trường THPT TP.HCM</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700;800&family=Sigmar+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=20260618-2">
 </head>
 <body data-page="home">
+    <div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.html" aria-label="SchoolCarto Virtual Tour trang chủ">
@@ -19,11 +20,11 @@
                 </span>
             </a>
 
-            <nav class="site-nav" aria-label="Điều hướng chính">
-                <a href="#gioi-thieu">Giới thiệu</a>
-                <a href="#ban-do">Bản đồ</a>
-                <a href="#du-lieu">Dữ liệu</a>
-                <a href="#truong-hoc">Trường học</a>
+            <nav class="site-nav" aria-label="Điều hướng chính" data-i18n="nav.aria" data-i18n-attr="aria-label">
+                <a href="#gioi-thieu" data-i18n="nav.about">Giới thiệu</a>
+                <a href="#ban-do" data-i18n="nav.map">Bản đồ</a>
+                <a href="#du-lieu" data-i18n="nav.data">Dữ liệu</a>
+                <a href="#truong-hoc" data-i18n="nav.schools">Trường học</a>
             </nav>
 
             <button class="language-toggle" type="button" aria-label="Chuyển ngôn ngữ" aria-pressed="false" data-lang-toggle>
@@ -45,18 +46,18 @@
         <section class="hero-section">
             <div class="container hero-grid">
                 <div class="hero-copy">
-                    <p class="eyebrow">Hoa Phượng Đỏ 2026</p>
+                    <p class="eyebrow" data-i18n="hero.eyebrow">Hoa Phượng Đỏ 2026</p>
                     <h1 class="hero-title">SchoolCarto</h1>
-                    <p class="hero-subtitle">Bản đồ số và tour ảo giúp học sinh tra cứu không gian, địa chỉ và thông tin cơ bản của các trường THPT tại TP.HCM.</p>
-                    <p class="hero-subtitle-en">A compact digital atlas for HCMC high schools.</p>
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">Bản đồ số và tour ảo giúp học sinh tra cứu không gian, địa chỉ và thông tin cơ bản của các trường THPT tại TP.HCM.</p>
+                    <p class="hero-subtitle-en" data-i18n="hero.caption">A compact digital atlas for HCMC high schools.</p>
                     <div class="hero-actions" aria-label="Hành động chính">
-                        <a href="#ban-do" class="btn btn-primary">Mở bản đồ</a>
-                        <a href="tour360.html?id=trandainghia" class="btn btn-ghost">Thử tour 360</a>
+                        <a href="#ban-do" class="btn btn-primary" data-i18n="cta.openMap">Mở bản đồ</a>
+                        <a href="tour360.html?id=trandainghia" class="btn btn-ghost" data-i18n="cta.tryTour">Thử tour 360</a>
                     </div>
                     <div class="hero-tags" aria-label="Điểm nổi bật">
-                        <span>Interactive map</span>
-                        <span>Tour 360</span>
-                        <span>Dữ liệu THPT</span>
+                        <span data-i18n="tag.map">Interactive map</span>
+                        <span data-i18n="tag.tour">Tour 360</span>
+                        <span data-i18n="tag.data">Dữ liệu THPT</span>
                     </div>
                     <div class="hero-sticker-row" aria-hidden="true">
                         <span>A+</span>
@@ -69,85 +70,77 @@
                     <img src="assets/images/anhchinh.png" alt="Toàn cảnh Trường THPT chuyên Trần Đại Nghĩa nhìn từ trên cao">
                     <div class="pin-mascot" aria-hidden="true"><span></span></div>
                     <div class="hero-floating-panel" aria-label="Thông tin nhanh SchoolCarto">
-                        <span>Data first</span>
-                        <strong>9 địa chỉ</strong>
-                        <small>2 tour mẫu đang mở</small>
+                        <span data-i18n="hero.dataFirst">Ưu tiên dữ liệu</span>
+                        <strong><b data-count="9">0</b> <span data-i18n="hero.addresses">địa chỉ</span></strong>
+                        <small><b data-count="2">0</b> <span data-i18n="hero.tours">tour mẫu đang mở</span></small>
                     </div>
-                    <figcaption>Không gian trường học được trình bày như một cổng tra cứu trực quan.</figcaption>
+                    <figcaption data-i18n="hero.figcaption">Không gian trường học được trình bày như một cổng tra cứu trực quan.</figcaption>
                 </figure>
             </div>
         </section>
 
+        <div class="marquee" aria-label="Chủ đề SchoolCarto" data-i18n="marquee.aria" data-i18n-attr="aria-label">
+            <div class="marquee-track" aria-hidden="true">
+                <span data-i18n="marquee.map">Bản đồ số</span><i></i>
+                <span data-i18n="marquee.tour">Tour 360</span><i></i>
+                <span data-i18n="marquee.data">Dữ liệu THPT</span><i></i>
+                <span data-i18n="marquee.map">Bản đồ số</span><i></i>
+                <span data-i18n="marquee.tour">Tour 360</span><i></i>
+                <span data-i18n="marquee.data">Dữ liệu THPT</span><i></i>
+            </div>
+        </div>
+
         <section class="container info-section reveal" id="gioi-thieu">
             <div class="section-heading">
-                <p class="section-kicker">Định hướng dự án</p>
-                <h2>Một bản đồ trường học ngắn gọn, khách quan và dễ tra cứu</h2>
+                <p class="section-kicker" data-i18n="about.kicker">Định hướng dự án</p>
+                <h2 data-i18n="about.title">Một bản đồ trường học ngắn gọn, khách quan và dễ tra cứu</h2>
             </div>
 
             <div class="info-grid">
                 <article class="info-panel campaign-hpd">
-                    <span class="panel-label">Chiến dịch</span>
+                    <span class="panel-label" data-i18n="about.campaignLabel">Chiến dịch</span>
                     <h3>Hoa Phượng Đỏ 2026</h3>
-                    <p>Dự án hỗ trợ học sinh tiếp cận thông tin trường học bằng bản đồ số, hình ảnh trực quan và nội dung ngắn gọn.</p>
+                    <p data-i18n="about.campaignText">Dự án hỗ trợ học sinh tiếp cận thông tin trường học bằng bản đồ số, hình ảnh trực quan và nội dung ngắn gọn.</p>
                 </article>
 
                 <article class="info-panel squad-bdhvs">
-                    <span class="panel-label">Đội hình</span>
+                    <span class="panel-label" data-i18n="about.teamLabel">Đội hình</span>
                     <h3>Bình Dân Học Vụ Số</h3>
-                    <p>Ưu tiên dữ liệu rõ ràng, bố cục dễ quét và trải nghiệm thân thiện để người dùng tra cứu nhanh trên điện thoại.</p>
+                    <p data-i18n="about.teamText">Ưu tiên dữ liệu rõ ràng, bố cục dễ quét và trải nghiệm thân thiện để người dùng tra cứu nhanh trên điện thoại.</p>
                 </article>
             </div>
 
             <div class="process-strip" aria-label="Quy trình khám phá SchoolCarto">
                 <div>
                     <span>01</span>
-                    <strong>Chọn khu vực</strong>
-                    <p>Xem các điểm trường đang có trên bản đồ minh họa.</p>
+                    <strong data-i18n="process.selectTitle">Chọn khu vực</strong>
+                    <p data-i18n="process.selectText">Xem các điểm trường đang có trên bản đồ minh họa.</p>
                 </div>
                 <div>
                     <span>02</span>
-                    <strong>Đọc dữ liệu</strong>
-                    <p>Tra cứu địa chỉ, khu vực và mô tả ngắn của từng trường.</p>
+                    <strong data-i18n="process.readTitle">Đọc dữ liệu</strong>
+                    <p data-i18n="process.readText">Tra cứu địa chỉ, khu vực và mô tả ngắn của từng trường.</p>
                 </div>
                 <div>
                     <span>03</span>
-                    <strong>Mở tour 360</strong>
-                    <p>Quan sát các điểm chính trong khuôn viên qua ảnh tương tác.</p>
+                    <strong data-i18n="process.tourTitle">Mở tour 360</strong>
+                    <p data-i18n="process.tourText">Quan sát các điểm chính trong khuôn viên qua ảnh tương tác.</p>
                 </div>
-            </div>
-        </section>
-
-        <section class="container playful-strip reveal" aria-label="Các điểm nhấn trực quan">
-            <div class="play-token">
-                <span>Map</span>
-                <strong>Bản đồ</strong>
-            </div>
-            <div class="play-token">
-                <span>360</span>
-                <strong>Tour ảo</strong>
-            </div>
-            <div class="play-token">
-                <span>Fast</span>
-                <strong>Dễ quét</strong>
-            </div>
-            <div class="play-token">
-                <span>Check</span>
-                <strong>Tra cứu</strong>
             </div>
         </section>
 
         <section class="container map-section reveal" id="ban-do" aria-labelledby="mapTitle">
             <div class="map-header">
                 <div class="section-heading">
-                    <p class="section-kicker">Khám phá theo khu vực</p>
-                    <h2 id="mapTitle">Bản đồ tương tác</h2>
+                    <p class="section-kicker" data-i18n="map.kicker">Khám phá theo khu vực</p>
+                    <h2 id="mapTitle" data-i18n="map.title">Bản đồ tương tác</h2>
                 </div>
 
                 <label class="selector-wrap" for="mapSelector">
-                    <span>Khu vực</span>
+                    <span data-i18n="map.region">Khu vực</span>
                     <select id="mapSelector" class="map-selector">
-                        <option value="khu_vuc_1">Khu vực 1 - Trung tâm</option>
-                        <option value="khu_vuc_2">Khu vực 2 - Mở rộng</option>
+                        <option value="khu_vuc_1" data-i18n="map.region1">Khu vực 1 - Trung tâm</option>
+                        <option value="khu_vuc_2" data-i18n="map.region2">Khu vực 2 - Mở rộng</option>
                     </select>
                 </label>
             </div>
@@ -159,12 +152,12 @@
                         <div id="mapPinsArea" class="map-pins" aria-label="Các điểm trường trên bản đồ"></div>
                     </div>
                     <div class="map-legend" aria-label="Chú giải bản đồ">
-                        <span><i class="dot dot-school"></i> Điểm trường</span>
-                        <span><i class="dot dot-active"></i> Đang chọn</span>
+                        <span><i class="dot dot-school"></i><b data-i18n="map.legendSchool">Điểm trường</b></span>
+                        <span><i class="dot dot-active"></i><b data-i18n="map.legendActive">Đang chọn</b></span>
                     </div>
                 </div>
 
-                <aside class="map-details" id="mapDetails" aria-live="polite">
+                <aside class="map-details spotlight" id="mapDetails" aria-live="polite">
                     <span class="badge">Đang chọn</span>
                     <h3>THPT chuyên Trần Đại Nghĩa</h3>
                     <p>Chọn một điểm trên bản đồ để xem nhanh thông tin trường và mở trải nghiệm tham quan 360.</p>
@@ -175,103 +168,27 @@
 
         <section class="container data-section reveal" id="du-lieu" aria-labelledby="dataTitle">
             <div class="section-heading">
-                <p class="section-kicker">School atlas</p>
-                <h2 id="dataTitle">Dữ liệu địa chỉ trường học</h2>
-                <p class="section-note">Danh sách được trình bày theo giọng văn tra cứu: ngắn, khách quan và ưu tiên thông tin cần thiết.</p>
+                <p class="section-kicker" data-i18n="data.kicker">School atlas</p>
+                <h2 id="dataTitle" data-i18n="data.title">Dữ liệu địa chỉ trường học</h2>
+                <p class="section-note" data-i18n="data.note">Danh sách được trình bày theo giọng văn tra cứu: ngắn, khách quan và ưu tiên thông tin cần thiết.</p>
             </div>
 
             <div class="data-toolbar" aria-label="Trạng thái dữ liệu">
-                <span>9 địa chỉ</span>
-                <span>Đang bổ sung tour</span>
-                <span>Dữ liệu gọn</span>
+                <span><b data-count="9">0</b> <i data-i18n="data.addresses">địa chỉ</i></span>
+                <span data-i18n="data.updating">Đang bổ sung tour</span>
+                <span data-i18n="data.compact">Dữ liệu gọn</span>
             </div>
 
-            <div class="address-grid" aria-label="Danh sách địa chỉ trường">
-                <article class="address-card featured">
-                    <span class="badge">Cơ sở chính</span>
-                    <h3>Trần Đại Nghĩa (Chuyên)</h3>
-                    <p>Lô P2 Khu tái định cư 38.4 ha, P. An Khánh, TP. HCM</p>
-                </article>
-                <article class="address-card">
-                    <span class="badge">Cơ sở Sài Gòn</span>
-                    <h3>Trần Đại Nghĩa (Liên cấp / THCS-THPT)</h3>
-                    <p>20 Lý Tự Trọng, P. Sài Gòn, TP.HCM</p>
-                </article>
-                <article class="address-card">
-                    <span class="badge">Trung tâm</span>
-                    <h3>Lê Hồng Phong</h3>
-                    <p>235 Nguyễn Văn Cừ, phường Chợ Quán, TP.HCM</p>
-                </article>
-                <article class="address-card">
-                    <span class="badge">Cơ sở An Đông</span>
-                    <h3>Phổ thông Năng khiếu</h3>
-                    <p>153 Nguyễn Chí Thanh, phường An Đông, TP.HCM</p>
-                </article>
-                <article class="address-card">
-                    <span class="badge">Cơ sở Đông Hòa</span>
-                    <h3>Phổ thông Năng khiếu</h3>
-                    <p>Khu đô thị ĐHQG-HCM, đường William Shakespears, phường Đông Hòa, TP.HCM</p>
-                </article>
-                <article class="address-card">
-                    <span class="badge">Mở rộng</span>
-                    <h3>Chuyên Lê Quý Đôn</h3>
-                    <p>Ba Tháng Hai, Phước Thắng, TP.HCM</p>
-                </article>
-                <article class="address-card">
-                    <span class="badge">Mở rộng</span>
-                    <h3>Chuyên Hùng Vương</h3>
-                    <p>593 Đại lộ Bình Dương, Thủ Dầu Một, TP.HCM</p>
-                </article>
-                <article class="address-card">
-                    <span class="badge">Trung tâm</span>
-                    <h3>THPT Lê Quý Đôn</h3>
-                    <p>110 Nguyễn Thị Minh Khai, Xuân Hòa, TP.HCM</p>
-                </article>
-                <article class="address-card">
-                    <span class="badge">Trung tâm</span>
-                    <h3>Nguyễn Thị Minh Khai</h3>
-                    <p>275 Điện Biên Phủ, phường Xuân Hòa, TP.HCM</p>
-                </article>
-            </div>
+            <div class="address-grid" id="addressGrid" aria-label="Danh sách địa chỉ trường"></div>
         </section>
 
         <section class="container schools-section" id="truong-hoc" aria-labelledby="schoolsTitle">
             <div class="section-heading centered reveal">
-                <p class="section-kicker">Danh sách trường</p>
-                <h2 id="schoolsTitle">Tour mẫu đang hoạt động</h2>
+                <p class="section-kicker" data-i18n="schools.kicker">Danh sách trường</p>
+                <h2 id="schoolsTitle" data-i18n="schools.title">Tour mẫu đang hoạt động</h2>
             </div>
 
-            <div class="card-grid">
-                <article class="school-card reveal">
-                    <img src="assets/images/schools/lhp.png" alt="Khuôn viên Trường THPT chuyên Lê Hồng Phong">
-                    <div class="card-content">
-                        <span class="badge">Quận 5</span>
-                        <h3>THPT Chuyên Lê Hồng Phong</h3>
-                        <p>Thông tin mẫu gồm hình ảnh khuôn viên, địa chỉ trung tâm và điểm tham quan chính để người dùng hình dung nhanh môi trường học tập.</p>
-                        <div class="card-meta" aria-label="Thông tin nhanh">
-                            <span>Tour 360</span>
-                            <span>235 Nguyễn Văn Cừ</span>
-                            <span>Ảnh thật</span>
-                        </div>
-                        <a href="tour360.html?id=lehongphong" class="btn btn-primary">Tham quan 360</a>
-                    </div>
-                </article>
-
-                <article class="school-card reveal">
-                    <img src="assets/images/schools/tdn.png" alt="Mặt tiền Trường THPT chuyên Trần Đại Nghĩa">
-                    <div class="card-content">
-                        <span class="badge">An Khánh</span>
-                        <h3>THPT Chuyên Trần Đại Nghĩa</h3>
-                        <p>Thông tin mẫu tập trung vào toàn cảnh cơ sở chính, khu học tập và khu vận động, giúp người xem nắm bố cục khuôn viên.</p>
-                        <div class="card-meta" aria-label="Thông tin nhanh">
-                            <span>Tour 360</span>
-                            <span>Lô P2 An Khánh</span>
-                            <span>Ảnh thật</span>
-                        </div>
-                        <a href="tour360.html?id=trandainghia" class="btn btn-primary">Tham quan 360</a>
-                    </div>
-                </article>
-            </div>
+            <div class="card-grid" id="schoolCards"></div>
         </section>
     </main>
 
@@ -280,8 +197,8 @@
             <div>
                 <strong>SchoolCarto Virtual Tour</strong>
                 <p>TRƯỜNG THPT CHUYÊN TRẦN ĐẠI NGHĨA</p>
-                <p>Cơ sở chính: Lô P2 Khu tái định cư 38.4 ha, P. An Khánh, TP. HCM</p>
-                <p>Cơ sở phường Sài Gòn: 20 Lý Tự Trọng, P. Sài Gòn, TP.HCM</p>
+                <p data-i18n="footer.mainCampus">Cơ sở chính: Lô P2 Khu tái định cư 38.4 ha, P. An Khánh, TP.HCM</p>
+                <p data-i18n="footer.saigonCampus">Cơ sở phường Sài Gòn: 20 Lý Tự Trọng, P. Sài Gòn, TP.HCM</p>
             </div>
             <div class="footer-logos" aria-label="Logo đơn vị đồng hành">
                 <img src="assets/images/logos/truong.png" alt="Logo Trường THPT chuyên Trần Đại Nghĩa" class="logo-tdn">
@@ -290,13 +207,13 @@
                 <img src="assets/images/logos/bdhvs-tight.png" alt="Logo Bình Dân Học Vụ Số" class="logo-bdhvs">
             </div>
             <div class="footer-links">
-                <a href="https://www.facebook.com/thptchuyentrandainghia">Facebook Trường</a>
-                <a href="https://www.facebook.com/doantruongtdn">Facebook Đoàn Trường</a>
+                <a href="https://www.facebook.com/thptchuyentrandainghia" data-i18n="footer.schoolFacebook">Facebook Trường</a>
+                <a href="https://www.facebook.com/doantruongtdn" data-i18n="footer.unionFacebook">Facebook Đoàn Trường</a>
                 <span>© 2026 Bình Dân Học Vụ Số</span>
             </div>
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=20260618-2"></script>
 </body>
 </html>
