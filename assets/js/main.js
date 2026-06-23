@@ -235,20 +235,15 @@ const mapData = {
 
 function localized(value) {
     if (!value || typeof value !== "object") return value;
-    if (currentLang === "bi") {
-        return value.vi === value.en ? value.vi : `${value.vi} / ${value.en}`;
-    }
     return value[currentLang] || value.vi;
 }
 
 function schoolName(school) {
     if (currentLang === "en") return school.enName;
-    if (currentLang === "bi") return `${school.name} / ${school.enName}`;
     return school.name;
 }
 
 function textFor(key, lang = currentLang) {
-    if (lang === "bi") return `${I18N.vi[key]} / ${I18N.en[key]}`;
     return I18N[lang]?.[key] ?? I18N.vi[key] ?? key;
 }
 
@@ -268,7 +263,7 @@ function setBilingualContent(element, viText, enText) {
 }
 
 function applyLang(lang, rerender = true) {
-    currentLang = ["vi", "en", "bi"].includes(lang) ? lang : "vi";
+    currentLang = ["vi", "en"].includes(lang) ? lang : "vi";
     document.documentElement.lang = currentLang === "en" ? "en" : "vi";
     document.documentElement.dataset.langMode = currentLang;
 
@@ -280,9 +275,7 @@ function applyLang(lang, rerender = true) {
 
         const attribute = element.dataset.i18nAttr;
         if (attribute) {
-            element.setAttribute(attribute, currentLang === "bi" ? `${viText} / ${enText}` : I18N[currentLang][key]);
-        } else if (currentLang === "bi") {
-            setBilingualContent(element, viText, enText);
+            element.setAttribute(attribute, I18N[currentLang][key]);
         } else {
             element.textContent = I18N[currentLang][key];
         }
@@ -312,14 +305,13 @@ function applyLang(lang, rerender = true) {
 function updateLanguageButton() {
     const toggle = document.querySelector("[data-lang-toggle]");
     if (!toggle) return;
-    const order = ["vi", "en", "bi"];
+    const order = ["vi", "en"];
     const nextLang = order[(order.indexOf(currentLang) + 1) % order.length];
     const current = toggle.querySelector("[data-lang-current]");
     const next = toggle.querySelector("[data-lang-next]");
     if (current) current.textContent = currentLang.toUpperCase();
     if (next) next.textContent = nextLang.toUpperCase();
     toggle.classList.toggle("is-en", currentLang === "en");
-    toggle.classList.toggle("is-bi", currentLang === "bi");
     toggle.setAttribute("aria-pressed", String(currentLang !== "vi"));
     toggle.setAttribute("aria-label", textFor("lang.label"));
 }
@@ -332,7 +324,7 @@ function initLanguageToggle() {
     if (!toggle) return;
 
     toggle.addEventListener("click", () => {
-        const order = ["vi", "en", "bi"];
+        const order = ["vi", "en"];
         applyLang(order[(order.indexOf(currentLang) + 1) % order.length]);
     });
 }
@@ -398,7 +390,6 @@ function updateMapDetails(schoolId) {
         <span class="badge">${textFor("map.active")}</span>
         <h3>${currentLang === "en" ? school.enName : school.name}</h3>
         ${currentLang === "vi" ? `<p class="school-en">${school.enName}</p>` : ""}
-        ${currentLang === "bi" ? `<p class="school-en">${school.enName}</p>` : ""}
         <p>${localized(school.cardText)}</p>
         <p class="school-address">${school.address}</p>
         <a class="btn btn-primary" href="tour360.html?id=${schoolId}">${textFor("cta.openTour")}</a>
