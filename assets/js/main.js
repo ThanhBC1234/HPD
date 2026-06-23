@@ -159,7 +159,7 @@ const schoolDirectory = [
 
 const schools = {
     lehongphong: {
-        name: "THPT Chuyên Lê Hồng Phong",
+        name: "Trường THPT chuyên Lê Hồng Phong",
         enName: "Le Hong Phong High School for the Gifted",
         district: { vi: "Chợ Quán", en: "Cho Quan" },
         address: "235 Nguyễn Văn Cừ, P. Chợ Quán, TP.HCM",
@@ -186,7 +186,7 @@ const schools = {
         ]
     },
     trandainghia: {
-        name: "THPT Chuyên Trần Đại Nghĩa",
+        name: "Trường THPT chuyên Trần Đại Nghĩa",
         enName: "Tran Dai Nghia High School for the Gifted",
         district: { vi: "An Khánh", en: "An Khanh" },
         address: "Lô P2 Khu tái định cư 38.4 ha, P. An Khánh, TP.HCM",
@@ -597,6 +597,23 @@ function initSpotlight() {
     });
 }
 
+function initAmbientMotion() {
+    const motionItems = document.querySelectorAll("[data-ambient-motion]");
+    if (!motionItems.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window)) {
+        motionItems.forEach((item) => item.classList.add("is-visible"));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            entry.target.classList.toggle("is-visible", entry.isIntersecting);
+        });
+    }, { threshold: 0.05 });
+
+    motionItems.forEach((item) => observer.observe(item));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     initLanguageToggle();
     initHomePage();
@@ -606,4 +623,5 @@ document.addEventListener("DOMContentLoaded", () => {
     initCounters();
     initTilt();
     initSpotlight();
+    initAmbientMotion();
 });
