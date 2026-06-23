@@ -1,25 +1,33 @@
 :root {
-    --klein: #0035B5;
+    --ink: #00185F;
     --klein-deep: #00185F;
-    --klein-600: #1E55D6;
+    --klein: #0035B5;
+    --blue: #0035B5;
+    --blue-bright: #2E6BFF;
+    --klein-600: #2E6BFF;
     --klein-400: #70A7FF;
     --klein-200: #C8E5FF;
     --klein-50: #EDF6FF;
-    --paper: #F7FBFF;
+    --sky: #EDF6FF;
+    --paper: #FFF7E6;
     --white: #FFFFFF;
-    --gold: #F5B942;
+    --gold: #FFC53D;
+    --sun: #FFC53D;
     --hpd-red: #E4232E;
+    --red: #E4232E;
+    --red-strong: #D81724;
     --red-soft: #FFE9EC;
-    --mint: #9EEBCF;
+    --mint: #1FBE9B;
+    --mint-soft: #CFF8ED;
     --pink: #FFD7E8;
     --paper-yellow: #FFF4BC;
-    --ink: #0E1B3D;
     --ink-soft: #51607D;
-    --line: #E3E9F8;
-    --radius: 16px;
-    --shadow-sm: 0 2px 10px rgba(0, 47, 167, .06);
-    --shadow-md: 0 12px 30px rgba(0, 47, 167, .10);
-    --shadow-lg: 0 22px 50px rgba(0, 47, 167, .16);
+    --line: #0E1B3D;
+    --radius: 18px;
+    --shadow-sm: 4px 4px 0 var(--line);
+    --shadow-md: 6px 6px 0 var(--line);
+    --shadow-lg: 8px 8px 0 var(--line);
+    --border-bold: 2.5px solid var(--line);
 }
 
 * {
@@ -55,7 +63,7 @@ h3,
 .section-kicker,
 .panel-label,
 .badge {
-    font-family: "Noto Serif", Georgia, serif;
+    font-family: "Baloo 2", "Noto Serif", Georgia, serif;
     font-weight: 800;
 }
 
@@ -1616,6 +1624,707 @@ a:focus-visible {
     font-size: .9rem;
 }
 
+/* Design spec v2: adventure-map chrome with objective data surfaces. */
+body {
+    background:
+        radial-gradient(circle at 1px 1px, rgba(0, 24, 95, .055) 1px, transparent 0) 0 0 / 28px 28px,
+        linear-gradient(180deg, #C9E7FF 0%, #D8EFFF 28%, #EAF7FF 62%, #F8FDFF 100%);
+    background-color: #F8FDFF;
+}
+
+main {
+    background:
+        linear-gradient(180deg, rgba(201, 231, 255, .96) 0%, rgba(216, 239, 255, .9) 28%, rgba(234, 247, 255, .78) 62%, rgba(248, 253, 255, .96) 100%);
+}
+
+.site-header {
+    border-bottom: var(--border-bold);
+    box-shadow: 0 4px 0 var(--line);
+}
+
+.brand-logo,
+.partner-logos img,
+.footer-logos img {
+    background: var(--white);
+    border: var(--border-bold);
+    box-shadow: 3px 3px 0 var(--line);
+}
+
+.brand-logo {
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.brand-text small,
+.site-nav a,
+.language-toggle,
+.btn,
+.map-selector,
+.selector-wrap span,
+.data-toolbar span,
+.card-meta span,
+.tour-status-row span {
+    font-family: "Baloo 2", "Noto Serif", Georgia, serif;
+}
+
+.site-nav a {
+    background: var(--white);
+    border: 2px solid transparent;
+    color: var(--ink);
+    font-weight: 800;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+    background: var(--sun);
+    border-color: var(--line);
+    color: var(--ink);
+    box-shadow: 3px 3px 0 var(--line);
+    transform: translate(-1px, -1px);
+}
+
+.language-toggle {
+    background: var(--white);
+    border: var(--border-bold);
+    box-shadow: 4px 4px 0 var(--line);
+    color: var(--ink);
+    min-height: 44px;
+}
+
+.language-toggle:hover {
+    background: var(--sun);
+    box-shadow: 5px 5px 0 var(--line);
+    color: var(--ink);
+    transform: translate(-1px, -1px);
+}
+
+.language-toggle:active,
+.btn:active,
+.map-selector:active {
+    box-shadow: 0 0 0 var(--line);
+    transform: translate(4px, 4px);
+}
+
+.language-toggle.is-en {
+    background: var(--mint);
+    box-shadow: 4px 4px 0 var(--line);
+    color: var(--ink);
+}
+
+.language-toggle.is-bi {
+    background: var(--paper-yellow);
+    box-shadow: 4px 4px 0 var(--line);
+}
+
+.partner-logos {
+    gap: 9px;
+}
+
+.partner-logos img {
+    border-radius: 14px;
+    padding: 4px;
+}
+
+.partner-logos .logo-bdhvs {
+    padding: 2px 5px;
+}
+
+.hero-section,
+.tour-hero {
+    background:
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, .18) 1px, transparent 0) 0 0 / 24px 24px,
+        linear-gradient(135deg, rgba(255, 197, 61, .14) 0 18%, transparent 18% 100%),
+        linear-gradient(160deg, var(--klein-deep), var(--klein) 58%, var(--blue-bright));
+}
+
+.hero-section::before {
+    right: min(7vw, 88px);
+    top: 36px;
+    width: 72px;
+    height: 72px;
+    background:
+        linear-gradient(90deg, transparent 47%, var(--line) 48% 52%, transparent 53%),
+        linear-gradient(0deg, transparent 47%, var(--line) 48% 52%, transparent 53%),
+        radial-gradient(circle, var(--white) 0 47%, var(--sun) 48% 100%);
+    border: var(--border-bold);
+    border-radius: 50%;
+    box-shadow: 5px 5px 0 var(--line);
+    transform: rotate(10deg);
+}
+
+.hero-section::after {
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, .22) 50%, transparent 0) 0 0 / 18px 18px,
+        linear-gradient(rgba(255, 255, 255, .22) 50%, transparent 0) 0 0 / 18px 18px;
+}
+
+.eyebrow,
+.section-kicker,
+.panel-label {
+    align-items: center;
+    background: var(--white);
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    color: var(--red-strong);
+    display: inline-flex;
+    font-family: "Baloo 2", "Noto Serif", Georgia, serif;
+    font-size: .88rem;
+    font-weight: 800;
+    line-height: 1.1;
+    padding: 6px 12px;
+    text-transform: uppercase;
+}
+
+.eyebrow::before,
+.section-kicker::before {
+    background: var(--sun);
+    border: 2px solid var(--line);
+    border-radius: 50% 50% 50% 4px;
+    content: "";
+    height: 12px;
+    margin-right: 8px;
+    transform: rotate(-45deg);
+    width: 12px;
+}
+
+.hero-title,
+.tour-copy h1 {
+    text-shadow: 4px 4px 0 var(--red);
+}
+
+.section-heading h2 {
+    color: var(--blue);
+    text-shadow: 4px 4px 0 #FFE27A;
+}
+
+.hero-subtitle,
+.hero-subtitle-en,
+.tour-copy p {
+    color: rgba(255, 255, 255, .9);
+}
+
+.btn {
+    border: var(--border-bold);
+    box-shadow: 4px 4px 0 var(--line);
+    font-weight: 800;
+    min-height: 48px;
+}
+
+.btn:hover {
+    box-shadow: 5px 5px 0 var(--line);
+    transform: translate(-1px, -1px);
+}
+
+.btn-primary {
+    background: var(--red);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--red-strong);
+    box-shadow: 5px 5px 0 var(--line);
+}
+
+.btn-ghost {
+    background: var(--white);
+    color: var(--ink);
+}
+
+.btn-ghost:hover {
+    background: var(--sun);
+    color: var(--ink);
+}
+
+.hero-tags span,
+.badge,
+.data-toolbar span,
+.card-meta span,
+.tour-status-row span {
+    border: 2px solid var(--line);
+    box-shadow: 3px 3px 0 var(--line);
+}
+
+.hero-tags span {
+    background: rgba(255, 255, 255, .16);
+}
+
+.badge {
+    background: var(--mint-soft);
+    color: var(--ink);
+    font-family: "Baloo 2", "Noto Serif", Georgia, serif;
+}
+
+.hero-sticker-row span {
+    animation: none;
+    border: var(--border-bold);
+    box-shadow: 4px 4px 0 var(--line);
+}
+
+.hero-sticker-row span:hover {
+    animation: stickerWiggle .45s ease both;
+}
+
+.hero-media img,
+.tour-viewer {
+    border: var(--border-bold);
+    box-shadow: var(--shadow-lg);
+}
+
+.pin-mascot {
+    animation: pinDrop .7s cubic-bezier(.18, .95, .24, 1.2) both;
+    background: var(--sun);
+    border: var(--border-bold);
+    box-shadow: 6px 6px 0 var(--line);
+}
+
+.pin-mascot span,
+.pin-mascot::before {
+    filter: drop-shadow(1px 1px 0 var(--line));
+}
+
+.pin-mascot span {
+    background: var(--ink);
+    box-shadow: 24px 0 0 var(--ink);
+}
+
+.pin-mascot::before {
+    border-bottom-color: var(--ink);
+}
+
+.pin-mascot::after {
+    background: var(--red);
+    border: 3px solid var(--line);
+}
+
+.pin-mascot:hover {
+    animation: pinBounce .45s ease both;
+}
+
+.hero-floating-panel {
+    border: var(--border-bold);
+    border-left: var(--border-bold);
+    box-shadow: var(--shadow-md);
+}
+
+.route-divider {
+    height: 76px;
+    margin: -26px auto 34px;
+    max-width: 960px;
+    padding: 0 24px;
+    position: relative;
+}
+
+.route-divider::before {
+    border-top: 4px dashed var(--line);
+    content: "";
+    left: 54px;
+    position: absolute;
+    right: 54px;
+    top: 38px;
+    transform: rotate(-1.2deg);
+}
+
+.route-divider span,
+.route-divider i,
+.route-divider b {
+    background: var(--white);
+    border: var(--border-bold);
+    box-shadow: 4px 4px 0 var(--line);
+    display: block;
+    position: absolute;
+}
+
+.route-divider span {
+    border-radius: 50% 50% 50% 7px;
+    height: 34px;
+    left: 40px;
+    top: 20px;
+    transform: rotate(-45deg);
+    width: 34px;
+}
+
+.route-divider span::before {
+    background: var(--sun);
+    border: 2px solid var(--line);
+    border-radius: 50%;
+    content: "";
+    height: 11px;
+    left: 8px;
+    position: absolute;
+    top: 8px;
+    width: 11px;
+}
+
+.route-divider i {
+    background: var(--mint);
+    border-radius: 50%;
+    height: 22px;
+    left: 50%;
+    top: 28px;
+    transform: translateX(-50%);
+    width: 22px;
+}
+
+.route-divider b {
+    background: var(--red);
+    border-radius: 4px;
+    height: 28px;
+    right: 42px;
+    top: 24px;
+    transform: rotate(7deg);
+    width: 28px;
+}
+
+.route-divider-b {
+    margin-top: -40px;
+}
+
+.info-section,
+.data-section,
+.map-section,
+.schools-section,
+.tour-info {
+    border: var(--border-bold);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+
+.info-section {
+    background: var(--sky);
+}
+
+.map-section {
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, .6), rgba(255, 247, 230, .95)),
+        radial-gradient(circle at 12px 12px, rgba(14, 27, 61, .08) 2px, transparent 0) 0 0 / 30px 30px;
+    padding: 42px 36px;
+}
+
+.data-section {
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, .96), rgba(255, 255, 255, .92)),
+        radial-gradient(circle at 12px 12px, rgba(0, 53, 181, .08) 2px, transparent 0) 0 0 / 28px 28px;
+}
+
+.schools-section {
+    background: var(--sky);
+    padding: 44px 36px;
+}
+
+.info-panel,
+.process-strip div,
+.map-container,
+.map-details,
+.address-card,
+.school-card,
+.tour-info-list div,
+.play-token {
+    border: var(--border-bold);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.info-panel {
+    overflow: visible;
+}
+
+.info-panel h3,
+.process-strip strong,
+.map-details h3,
+.card-content h3,
+.address-card h3,
+.tour-info h2 {
+    color: var(--blue);
+    font-family: "Baloo 2", "Noto Serif", Georgia, serif;
+    font-weight: 800;
+}
+
+.campaign-hpd h3 {
+    color: var(--blue);
+}
+
+.process-strip div {
+    background: var(--white);
+}
+
+.process-strip span {
+    color: var(--red-strong);
+    font-family: "Baloo 2", "Noto Serif", Georgia, serif;
+}
+
+.map-selector {
+    background: var(--white);
+    border: var(--border-bold);
+    box-shadow: 4px 4px 0 var(--line);
+    color: var(--ink);
+    min-height: 48px;
+}
+
+.map-container {
+    background: var(--white);
+    overflow: visible;
+}
+
+.map-container::before,
+.data-section::before,
+.badge-pulse {
+    background: var(--sun);
+    border: var(--border-bold);
+    box-shadow: 4px 4px 0 var(--line);
+    color: var(--ink);
+    font-family: "Baloo 2", "Noto Serif", Georgia, serif;
+}
+
+.map-stage,
+.map-image {
+    border-radius: 16px;
+}
+
+.map-stage {
+    border: var(--border-bold);
+    background: var(--paper);
+}
+
+.map-legend {
+    border: var(--border-bold);
+    box-shadow: var(--shadow-sm);
+    font-family: "Baloo 2", "Noto Serif", Georgia, serif;
+}
+
+.dot {
+    border: 2px solid var(--line);
+}
+
+.dot-school {
+    background: var(--blue);
+}
+
+.dot-active {
+    background: var(--sun);
+}
+
+.map-pin {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    height: 44px;
+    min-height: 44px;
+    min-width: 44px;
+    width: 44px;
+    z-index: 2;
+}
+
+.map-pin::before {
+    background:
+        radial-gradient(circle at 50% 50%, var(--white) 0 5px, transparent 6px),
+        var(--blue);
+    border: 3px solid var(--white);
+    border-radius: 50% 50% 50% 8px;
+    box-shadow: 4px 4px 0 var(--line);
+    content: "";
+    inset: 7px 8px 11px;
+    opacity: 1;
+    position: absolute;
+    transform: rotate(-45deg);
+    transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.map-pin::after {
+    border: 2px solid var(--line);
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 var(--line);
+    font-family: "Baloo 2", "Noto Serif", Georgia, serif;
+    top: -46px;
+}
+
+.map-pin:hover,
+.map-pin:focus-visible,
+.map-pin.is-active {
+    background: transparent;
+    transform: translate(-50%, -50%) scale(1.08);
+}
+
+.map-pin:hover::before,
+.map-pin:focus-visible::before {
+    background:
+        radial-gradient(circle at 50% 50%, var(--white) 0 5px, transparent 6px),
+        var(--mint);
+    opacity: 1;
+    transform: rotate(-45deg) translate(-2px, -2px);
+}
+
+.map-pin.is-active {
+    z-index: 4;
+}
+
+.map-pin.is-active::before {
+    background:
+        radial-gradient(circle at 50% 50%, var(--line) 0 4px, var(--white) 5px 8px, transparent 9px),
+        var(--sun);
+    border-color: var(--line);
+    box-shadow: 5px 5px 0 var(--line);
+    opacity: 1;
+    transform: rotate(-45deg) scale(1.16);
+}
+
+.map-details .school-en {
+    color: var(--red-strong);
+}
+
+.map-details .school-address {
+    background: var(--paper);
+    border: var(--border-bold);
+    border-left: 8px solid var(--sun);
+    box-shadow: 3px 3px 0 var(--line);
+}
+
+.address-card {
+    border-top: var(--border-bold);
+    min-height: 170px;
+}
+
+.address-card:nth-child(3n + 1) {
+    background: var(--white);
+}
+
+.address-card:nth-child(3n + 2) {
+    background: var(--sky);
+}
+
+.address-card:nth-child(3n + 3) {
+    background: var(--paper);
+}
+
+.address-card h3 {
+    font-size: 1.06rem;
+    line-height: 1.22;
+}
+
+.school-card {
+    border-radius: var(--radius);
+}
+
+.school-card:hover {
+    border-color: var(--line);
+    box-shadow: 9px 9px 0 var(--line);
+    transform: translate(-3px, -3px);
+}
+
+.school-card img {
+    border-bottom: var(--border-bold);
+}
+
+.badge-pulse::after {
+    border-color: var(--line);
+}
+
+.hotspot {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    height: 44px;
+    min-height: 44px;
+    min-width: 44px;
+    width: 44px;
+}
+
+.hotspot::before {
+    background:
+        radial-gradient(circle at 50% 50%, var(--white) 0 5px, transparent 6px),
+        var(--red);
+    border: 3px solid var(--white);
+    border-radius: 50% 50% 50% 8px;
+    box-shadow: 4px 4px 0 var(--line);
+    content: "";
+    inset: 7px 8px 11px;
+    position: absolute;
+    transform: rotate(-45deg);
+}
+
+.hotspot::after {
+    border: 2px solid rgba(255, 255, 255, .75);
+    inset: 1px;
+}
+
+.hotspot:hover,
+.hotspot:focus-visible,
+.hotspot.is-active {
+    background: transparent;
+}
+
+.hotspot:hover::before,
+.hotspot:focus-visible::before,
+.hotspot.is-active::before {
+    background:
+        radial-gradient(circle at 50% 50%, var(--line) 0 4px, var(--white) 5px 8px, transparent 9px),
+        var(--sun);
+    border-color: var(--line);
+}
+
+.tour-info {
+    background: var(--white);
+}
+
+.tour-info-list div {
+    background: var(--paper);
+}
+
+.marquee-track {
+    animation-play-state: paused;
+}
+
+.marquee.is-visible .marquee-track {
+    animation-play-state: running;
+}
+
+.site-footer {
+    border-top: var(--border-bold);
+    box-shadow: 0 -4px 0 var(--line);
+}
+
+@keyframes pinDrop {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) rotate(-18deg) scale(.82);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateY(5px) rotate(-18deg) scale(1.04);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(-18deg) scale(1);
+    }
+}
+
+@keyframes pinBounce {
+    0%,
+    100% {
+        transform: rotate(-18deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(-18deg) translateY(-7px);
+    }
+}
+
+@keyframes stickerWiggle {
+    0%,
+    100% {
+        transform: rotate(var(--sticker-rotate, -5deg));
+    }
+
+    35% {
+        transform: rotate(4deg) translateY(-2px);
+    }
+
+    70% {
+        transform: rotate(-3deg);
+    }
+}
+
 @media (max-width: 1040px) {
     .header-inner {
         grid-template-columns: 1fr;
@@ -2211,6 +2920,189 @@ a:focus-visible {
 
     .map-legend span {
         font-size: .72rem;
+    }
+}
+
+@media (max-width: 780px) {
+    .header-inner {
+        grid-template-areas:
+            "brand lang"
+            "nav nav"
+            "logos logos";
+        grid-template-columns: minmax(0, 1fr) auto;
+        padding: 10px 12px 12px;
+    }
+
+    .brand {
+        grid-area: brand;
+        justify-content: flex-start;
+        min-width: 0;
+    }
+
+    .brand-text {
+        min-width: 0;
+    }
+
+    .site-nav {
+        grid-area: nav;
+    }
+
+    .language-toggle {
+        grid-area: lang;
+        justify-self: end;
+        min-height: 44px;
+        min-width: 82px;
+        padding: 8px 9px;
+        position: static;
+    }
+
+    .partner-logos {
+        grid-area: logos;
+        min-height: 44px;
+    }
+
+    .partner-logos img {
+        height: 34px;
+        width: 34px;
+    }
+
+    .partner-logos .logo-tdn {
+        height: 35px;
+        width: 35px;
+    }
+
+    .partner-logos .logo-bdhvs {
+        height: 42px;
+        max-width: 82px;
+    }
+
+    .site-nav a {
+        border: 2px solid var(--line);
+        box-shadow: 2px 2px 0 var(--line);
+        font-family: "Baloo 2", "Noto Serif", Georgia, serif;
+        font-size: .72rem;
+        min-height: 38px;
+    }
+
+    .hero-section {
+        border-bottom: var(--border-bold);
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 11vw, 3rem);
+        max-width: 100%;
+    }
+
+    .tour-copy h1 {
+        font-size: clamp(1.72rem, 8.6vw, 2.35rem);
+        line-height: 1.12;
+        overflow-wrap: anywhere;
+        text-shadow: 3px 3px 0 #FFE27A;
+    }
+
+    .btn {
+        min-height: 44px;
+    }
+
+    .hero-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .route-divider {
+        height: 54px;
+        margin: -16px auto 26px;
+        padding: 0 14px;
+    }
+
+    .route-divider::before {
+        left: 42px;
+        right: 42px;
+        top: 27px;
+    }
+
+    .route-divider span {
+        height: 26px;
+        left: 24px;
+        top: 14px;
+        width: 26px;
+    }
+
+    .route-divider span::before {
+        height: 8px;
+        left: 6px;
+        top: 6px;
+        width: 8px;
+    }
+
+    .route-divider i {
+        height: 18px;
+        top: 19px;
+        width: 18px;
+    }
+
+    .route-divider b {
+        height: 22px;
+        right: 24px;
+        top: 16px;
+        width: 22px;
+    }
+
+    .info-section,
+    .data-section,
+    .map-section,
+    .schools-section,
+    .tour-info {
+        padding: 24px 16px;
+        width: auto;
+    }
+
+    .map-section,
+    .schools-section {
+        margin-bottom: 48px;
+    }
+
+    .section-heading h2 {
+        text-shadow: 3px 3px 0 #FFE27A;
+    }
+
+    .map-container,
+    .map-details,
+    .school-card,
+    .address-card,
+    .info-panel,
+    .process-strip div {
+        box-shadow: 4px 4px 0 var(--line);
+    }
+
+    .map-stage {
+        aspect-ratio: 4 / 3;
+    }
+
+    .map-pin,
+    .hotspot {
+        height: 44px;
+        min-height: 44px;
+        min-width: 44px;
+        width: 44px;
+    }
+
+    .address-card h3 {
+        font-size: 1rem;
+    }
+
+    .footer-logos img {
+        height: 42px;
+        width: 42px;
+    }
+
+    .footer-logos .logo-tdn {
+        height: 44px;
+        width: 44px;
+    }
+
+    .footer-logos .logo-bdhvs {
+        height: 44px;
+        max-width: 92px;
     }
 }
 
