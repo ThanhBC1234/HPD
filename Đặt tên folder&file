@@ -1,0 +1,8 @@
+1. Folder của các trường sẽ là bỏ phần "Trường THPT" đi phần sau viết tắt chữ cái đầu viêt hoa liền.
+VD: Trường THPT chuyên Trần Đại Nghĩa -> CTDN
+
+2. Tên các file của trường chính là tên foler chuyển về dạng chữ thường hết
+VD: folder là "CTDN" thì tên file ctdn.html
+
+3. Tên các biến id cho trường sẽ là tên file của trường đó luôn
+VD: ctdn.html thì biến id = ctdn
