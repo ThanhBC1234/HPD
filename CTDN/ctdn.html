@@ -105,7 +105,7 @@
         "scenes": {
             "cong": {
                 "type": "equirectangular",
-                "panorama": "CongTruong.jpg",
+                "panorama": "CongTruong.webp",
                 "pitch": 0, "yaw": 0,
                 "hotSpots": [
                     { "pitch": -4.5, "yaw": 20, "type": "info", "clickHandlerArgs": "san", "cssClass": "hotspot-circle", "clickHandlerFunc": teleportWithEffect, "text": "Sân Trường\nMô tả ngắn gọn...", },
@@ -115,7 +115,7 @@
 
             "sanh": {
                 "type": "equirectangular",
-                "panorama": "Sanh.jpg",
+                "panorama": "Sanh.webp",
                 "pitch": 0, "yaw": 0,
                 "hotSpots": [
                     { "pitch": 2.5, "yaw": 146, "type": "info", "clickHandlerArgs": "cong", "cssClass": "hotspot-circle", "clickHandlerFunc": teleportWithEffect, "text": "Cổng Trường\nMô tả..." },
@@ -127,7 +127,7 @@
 
             "san": {
                 "type": "equirectangular",
-                "panorama": "SanTruong.jpg",
+                "panorama": "SanTruong.webp",
                 "pitch": 0, "yaw": 0,
                 "hotSpots": [
                     { "pitch": -0.3, "yaw": 73, "type": "info", "clickHandlerArgs": "cong", "cssClass": "hotspot-circle", "clickHandlerFunc": teleportWithEffect, "text": "Cổng Trường\nMô tả..." },
@@ -140,7 +140,7 @@
 
             "cong_vien": {
                 "type": "equirectangular",
-                "panorama": "CongVien.jpg",
+                "panorama": "CongVien.webp",
                 "pitch": 0, "yaw": 0,
                 "hotSpots": [
                     { "pitch": -0.5, "yaw": 25, "type": "info", "clickHandlerArgs": "san", "cssClass": "hotspot-circle", "clickHandlerFunc": teleportWithEffect, "text": "Sân Trường\nMô tả..." },
@@ -151,7 +151,7 @@
 
             "phong_hop": {
                 "type": "equirectangular",
-                "panorama": "PhongHop.jpg",
+                "panorama": "PhongHop.webp",
                 "pitch": 0, "yaw": 0,
                 "hotSpots": [
                     { "pitch": 0.5, "yaw": 192, "type": "info", "clickHandlerArgs": "sanh", "cssClass": "hotspot-circle", "clickHandlerFunc": teleportWithEffect, "text": "Sảnh\nMô tả..." },
@@ -161,7 +161,7 @@
 
             "hanh_lang": {
                 "type": "equirectangular",
-                "panorama": "HanhLang_1.jpg",
+                "panorama": "HanhLang_1.webp",
                 "pitch": 0, "yaw": 0,
                 "hotSpots": [
                     { "pitch": -1, "yaw": -125, "type": "info", "clickHandlerArgs": "cong_vien", "cssClass": "hotspot-circle", "clickHandlerFunc": teleportWithEffect, "text": "Công viên\nMô tả..." },
@@ -173,7 +173,7 @@
 
             "thu_vien": {
                 "type": "equirectangular",
-                "panorama": "ThuVien.jpg",
+                "panorama": "ThuVien.webp",
                 "pitch": 0, "yaw": 0,
                 "hotSpots": [
                     { "pitch": 0, "yaw": 12, "type": "info", "clickHandlerArgs": "cong_vien", "cssClass": "hotspot-circle", "clickHandlerFunc": teleportWithEffect, "text": "Công viên\nMô tả..." },
@@ -182,6 +182,38 @@
             }
         }
     });
+
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const scenes = viewer.getConfig().scenes;
+            const currentScene = viewer.getScene();
+            let imageUrls = [];
+
+            for (let key in scenes) {
+                if (scenes.hasOwnProperty(key) && key !== currentScene) {
+                    imageUrls.push(scenes[key].panorama);
+                }
+            }
+
+            function preloadNext(index) {
+                if (index >= imageUrls.length) return;
+                
+                const img = new Image();
+                img.onload = function() {
+                    preloadNext(index + 1);
+                };
+                img.onerror = function() {
+                    preloadNext(index + 1);
+                };
+                img.src = imageUrls[index];
+            }
+
+            preloadNext(0);
+
+        }, 2000); 
+    });
+
+
     function toggleSub(element) {
         if(element.innerText.includes('▶')) {
             element.innerText = element.innerText.replace('▶', '▼');
