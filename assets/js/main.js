@@ -56,6 +56,7 @@ const I18N = {
         "schools.title": "Tour mẫu đang hoạt động",
         "schools.quickInfo": "Thông tin nhanh",
         "schools.realPhoto": "Ảnh thật",
+        "cta.viewFull360": "Tham quan Full 360° VR",
         "tour.back": "Trở về danh sách",
         "tour.selectSchool": "Trường tham quan",
         "tour.eyebrow": "Khuôn viên trực tuyến",
@@ -71,6 +72,7 @@ const I18N = {
         "page.homeDescription": "SchoolCarto Virtual Tour - bản đồ số hóa và dữ liệu tham quan trường THPT tại TP.HCM.",
         "page.tourTitle": "Tour 360 | SchoolCarto Virtual Tour",
         "page.tourDescription": "Trải nghiệm tour 360 trong dự án SchoolCarto Virtual Tour."
+        
     },
     en: {
         "nav.aria": "Main navigation",
@@ -127,6 +129,7 @@ const I18N = {
         "schools.title": "Available sample tours",
         "schools.quickInfo": "Quick information",
         "schools.realPhoto": "Real photo",
+        "cta.viewFull360": "Explore Full 360° VR",
         "tour.back": "Back to the list",
         "tour.selectSchool": "School to visit",
         "tour.eyebrow": "Virtual campus",
@@ -158,7 +161,7 @@ const schoolDirectory = [
 ];
 
 const schools = {
-    lehongphong: {
+    clhp: {
         name: "Trường THPT chuyên Lê Hồng Phong",
         enName: "Le Hong Phong High School for the Gifted",
         district: { vi: "Chợ Quán", en: "Cho Quan" },
@@ -185,7 +188,7 @@ const schools = {
             { title: { vi: "Khu vườn", en: "Garden" }, text: { vi: "Mảng xanh và khoảng nghỉ trong khuôn viên trường.", en: "Green space and a resting area within the campus." }, top: "68%", left: "28%" }
         ]
     },
-    trandainghia: {
+    ctdn: {
         name: "Trường THPT chuyên Trần Đại Nghĩa",
         enName: "Tran Dai Nghia High School for the Gifted",
         district: { vi: "An Khánh", en: "An Khanh" },
@@ -219,16 +222,16 @@ const mapData = {
         image: "assets/images/maps/map.png",
         alt: { vi: "Bản đồ minh họa khu vực trung tâm với các điểm trường", en: "Illustrated central-area map with school markers" },
         pins: [
-            { id: "lehongphong", top: "35%", left: "31%" },
-            { id: "trandainghia", top: "55%", left: "66%" }
+            { id: "clhp", top: "35%", left: "31%" },
+            { id: "ctdn", top: "55%", left: "66%" }
         ]
     },
     khu_vuc_2: {
         image: "assets/images/maps/test.png",
         alt: { vi: "Bản đồ minh họa khu vực mở rộng với các điểm trường", en: "Illustrated expanded-area map with school markers" },
         pins: [
-            { id: "lehongphong", top: "42%", left: "24%" },
-            { id: "trandainghia", top: "58%", left: "64%" }
+            { id: "clhp", top: "42%", left: "24%" },
+            { id: "ctdn", top: "58%", left: "64%" }
         ]
     }
 };
@@ -441,7 +444,7 @@ function initHomePage() {
 function getInitialSchoolId() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
-    return schools[id] ? id : "trandainghia";
+    return schools[id] ? id : "ctdn";
 }
 
 function setActiveHotspot(button, hotspot) {
@@ -454,7 +457,7 @@ function setActiveHotspot(button, hotspot) {
 }
 
 function renderTour(schoolId) {
-    const school = schools[schoolId] || schools.trandainghia;
+    const school = schools[schoolId] || schools.ctdn;
     const selector = document.getElementById("tourSchoolSelect");
     const title = document.getElementById("tourTitle");
     const subtitle = document.getElementById("tourSubtitle");
@@ -498,6 +501,52 @@ function renderTour(schoolId) {
             hotspots.appendChild(button);
             if (index === 0) button.classList.add("is-active");
         });
+    }
+    const full360Link = document.getElementById("full360Link");
+    if (full360Link) {
+        let destinationUrl = "#";
+
+        switch (schoolId) {
+            case "ctdn":
+                // Thay đổi -> thay đổi path đúng với thực tế dự án
+                destinationUrl = "CTDN/ctdn.html";
+                break;
+            case "clhp":
+                destinationUrl = ""; // Để trống, điền sau
+                break;
+            case "id_truong_3":
+                destinationUrl = ""; // Để trống, điền sau
+                break;
+            case "id_truong_4":
+                destinationUrl = ""; // Để trống, điền sau
+                break;
+            case "id_truong_5":
+                destinationUrl = ""; // Để trống, điền sau
+                break;
+            case "id_truong_6":
+                destinationUrl = ""; // Để trống, điền sau
+                break;
+            case "id_truong_7":
+                destinationUrl = ""; // Để trống, điền sau
+                break;
+            case "id_truong_8":
+                destinationUrl = ""; // Để trống, điền sau
+                break;
+            case "id_truong_9":
+                destinationUrl = ""; // Để trống, điền sau
+                break;
+            default:
+                destinationUrl = "#"; // value mặc định khi kco path
+        }
+
+        if (destinationUrl !== "") {
+            full360Link.href = destinationUrl;
+            full360Link.style.display = "inline-flex";
+        } else {
+            full360Link.href = "#";
+            // Tạm ẩn nút trg chx cập nhật (nếu)
+            full360Link.style.display = "none"; 
+        }
     }
 }
 
